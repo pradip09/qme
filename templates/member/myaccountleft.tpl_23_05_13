@@ -1,0 +1,323 @@
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ajax/jquery.form.js"></script>
+<script type="text/javascript" src="{$tconfig["front_javascript"]}jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="{$tconfig["front_javascript"]}Selectyze.jquery.js"></script>
+<script type="text/javascript" src="{$tconfig["front_javascript"]}scripts.js"></script>
+
+<link rel="stylesheet" href="{$tconfig["front_css"]}reset.css" />
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{$tconfig["front_css"]}text.css" type="text/css"/>
+<link rel="stylesheet" href="{$tconfig["front_css"]}960.css" />
+<link rel="stylesheet" href="{$tconfig["front_css"]}icons.css" type="text/css" />
+
+<link rel="stylesheet" href="{$tconfig["front_css"]}buttons.css" type="text/css"/>
+
+
+  <div class="user_photo">
+   
+ <div id="info">
+  <h1 class="profile">{$Name}</h1>
+  <h3 class= "place" >Lives in {$mem_info[0]['vState']}, {$mem_info[0]['vCity']} </h3>
+   <div class="photo_a">
+  {if {$mem_info[0].vProfileImage} eq ''}
+  <img src="{$tconfig["front_images"]}user_img.png" alt="" /> 
+  {else}
+  <img src="{$tconfig["tsite_upload_images_member"]}{$mem_info[0].iMemberId}/{$mem_info[0].vProfileImage}"title="profile image name" /> 
+ {/if}
+  
+  {if $vProfileImage neq ''} 
+    <div class="image_change_menu"><ul class="arrow_box"><li><a href="#" onclick="select_file()">Edit</a></li><li><a href="#" onclick="delete_image();">Delete</a></li></ul></div>
+    
+    {else}
+    <div class="image_change_menu image_edit_menu"><ul class="arrow_box"><li><a href="#" onclick="select_file()">Edit</a></li></ul></div>
+    {/if}
+   </div>
+  <p><a href="#" title="complte your profile" >50%</a> profile completed</p>
+  
+  </div>   <!--info div ends here-->
+  </div>
+  
+  
+   <div id="accordian">
+   
+    <nav>
+      <ul id="nav">
+        <li><a href="#"><span id="accordian_icon1"></span>Profile</a>
+          <ul  class="activepanel">
+            <li ><a href="{$site_url}/myaccount">My Home</a></li>
+            <li><a href="{$site_url}/myprofile">My Profile Setup</a></li>
+            <li><a href="{$site_url}/myabout">Add About You</a></li>
+            <li><a href="{$site_url}/{$mem_info[0].vMemberUrl}">View My Profile</a></li>
+          </ul>
+        </li>
+        <li ><a href="#"><span id="accordian_icon2"></span>Media &amp; News</a>
+          <ul> <!--use active class on ul to show its current page status-->
+            <li ><a href="{$site_url}/myphoto">My Photo</a></li>
+                <li ><a href="{$site_url}/myvideo">My Videos</a></li>
+                <li ><a href="{$site_url}/mysong">My Songs</a></li>
+                <li ><a href="{$site_url}/myevent">Post Event</a></li>
+                <li ><a href="{$site_url}/myblog">Post Blogs</a></li>
+          </ul>
+        </li>
+        <li ><a href="#"><span id="accordian_icon3"></span>Resources</a>
+          <ul>
+           <li ><a href="{$site_url}/mypostcampaign">Post Campaign</a></li>
+                <li ><a href="{$site_url}/mypostjob">Post Jobs</a></li>
+		{if $tot_storeitem eq '0' || $tot_storeitem eq ''}
+                <li ><a href="{$site_url}/mystoreplan">Create a Store</a></li>
+		{else}
+		 <li ><a href="{$site_url}/mystore">Create a Store</a></li>
+		{/if}
+		{if $mem_info[0].eNonProfit eq 'Yes' or $mem_info[0].eChruch eq 'Yes' or $mem_info[0].ePolitician eq 'Yes' or $mem_info[0].eFundraiser eq 'Yes'}
+                <li ><a href="{$site_url}/myfundraiser">Fundraiser</a></li>
+		{else}
+		{/if}
+                <li ><a href="{$site_url}/mystore">My Store</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span id="accordian_icon4"></span>Invite Friends</a>
+          <ul>
+          <li ><a href="{$site_url}/invite_friends">Invite Friends</a></li>
+                <li ><a href="{$site_url}/qmein">QME Connections</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span id="accordian_icon5"></span>My Points</a>
+          <ul>
+            <li ><a href="{$site_url}/buypoints">My Points</a></li>
+                <li ><a href="#">Total: {$Tot_pnts}</a></li>
+          </ul>
+        </li>
+       
+      </ul>
+    </nav>
+  </div>
+
+
+
+	   
+
+<!--<div class="user_name_myaccount">
+	<div class="user_photo">
+		<div class="photo_a">
+			{if $vProfileImage eq ''} 
+				<img src="{$tconfig["front_images"]}user_img.png" alt="" /> 
+			{else} 
+				<img src="{$tconfig["tsite_upload_images_member"]}/{$mem_info[0].iMemberId}/2_{$mem_info[0].vProfileImage}" alt="" /> 
+			{/if} 
+			{if $vProfileImage neq ''} 
+			<div class="image_change_menu"><ul class="arrow_box"><li><a href="#" onclick="select_file()">Edit</a></li><li><a href="#" onclick="delete_image();">Delete</a></li></ul></div>
+			{else}
+			<div class="image_change_menu image_edit_menu"><ul class="arrow_box"><li><a href="#" onclick="select_file()">Edit</a></li></ul></div>
+			{/if}
+		</div>
+	</div>
+	{$Name} 
+</div>
+
+<div class="cl"></div>
+<div class="my_account">
+	<ul>
+		<li {if $file eq 'm-myaccount'} class="liactive" {/if}><a href="{$site_url}/myaccount" {if $file eq 'm-myaccount'} class="active" {/if}><img src="{$tconfig["front_images"]}myaccount_icon0.png" alt="" />My Account</a></li>
+		<li {if $file eq 'm-myprofile'} class="liactive" {/if}><a href="{$site_url}/myprofile" {if $file eq 'm-myprofile'} class="active" {/if}><img src="{$tconfig["front_images"]}myaccount_icon1.png" alt="" />My Profile Setup<img src="{$tconfig["front_images"]}1.png" alt="" class="num_txt_img" /></a></li>
+		<li {if $file eq 'm-myabout' or $file eq 'm-myabout'} class="liactive" {/if}>
+		<a href="{$site_url}/myabout" {if $file eq 'm-myabout' or $file eq 'm-myabout'} class="active" {/if}> <img src="{$tconfig["front_images"]}myaccount_icon2.png" alt="" />Add About You</a>
+		</li>
+		<li {if $file eq 'm-myphoto' or $file eq 'm-myallphotos'} class="liactive" {/if}>
+		<a href="{$site_url}/myphoto" {if $file eq 'm-myphoto' or $file eq 'm-myallphotos'} class="active" {/if}> <img src="{$tconfig["front_images"]}myaccount_icon2.png" alt="" />My Photos</a>
+		</li>
+		<li {if $file eq 'm-myvideo' or $file eq 'm-myallvideos' or $file eq 'm-myvideoalbum' or $file eq 'm-myvideodetail'} class="liactive" {/if}>
+		<a href="{$site_url}/myvideo" {if $file eq 'm-myvideo' or $file eq 'm-myallvideos' or $file eq 'm-myvideoalbum' or $file eq 'm-myvideodetail'} class="active" {/if}><img src="{$tconfig["front_images"]}myaccount_icon3.png" alt="" />My Videos</a>
+		</li>
+		<li {if $file eq 'm-mysong' or $file eq 'm-mysongdetail' or $file eq 'm-myallsongs'} class="liactive" {/if}>
+		<a href="{$site_url}/mysong" {if $file eq 'm-mysong' or $file eq 'm-myallsongs' or $file eq 'm-mysongdetail' or $file eq 'm-mysongalbum'} class="active" {/if}> <img src="{$tconfig["front_images"]}myaccount_icon4.png" alt="" />My Songs</a>
+		</li>
+		<li {if $file eq 'm-myblog' or $file eq 'm-myblogadd'} class="liactive" {/if}>
+		<a href="{$site_url}/myblog" {if $file eq 'm-myblog' or $file eq 'm-myblogadd'} class="active" {/if} class="padingleft"> <img src="{$tconfig["front_images"]}myaccount_icon5.png" alt="" width="24" height="19" />My Blog</a>
+		</li>
+		<li {if $file eq 'm-myevent' or $file eq 'm-myaddevent'} class="liactive" {/if}>
+		<a href="{$site_url}/myevent" {if $file eq 'm-myevent' or $file eq 'm-myaddevent'} class="active" {/if} class="padingleft"><img src="{$tconfig["front_images"]}myevent.png" alt="" />My Events</a>
+		</li>
+		<li {if $file eq 'm-mypostjob' or $file eq 'm-mypostjobadd'} class="liactive" {/if}>
+		<a href="{$site_url}/mypostjob" {if $file eq 'm-mypostjob' or $file eq 'm-mypostjobadd'} class="active" {/if} class="padingleft" ><img src="{$tconfig["front_images"]}postjob.png" alt="" />Post Jobs</a>
+		</li>
+		<li {if $file eq 'm-mystore' or $file eq 'm-mystoreplan' or $file eq 'm-mystore_add' or $file eq 'm-myproducts' or $file eq 'm-mygeneralproductdetail' or $file eq 'm-mygeneralproduct_add' or $file eq 'm-myclothingproductdetail' or $file eq 'm-myclothingproduct_add' or $file eq 'm-myautomotiveproductdetail' or $file eq 'm-myautomotiveproduct_add' or $file eq 'm-myrealestateproductdetail' or $file eq 'm-myrealestateproduct_add'} class="liactive" {/if}>
+		{if $tot_storeitem eq '0' || $tot_storeitem eq ''}
+		<a href="{$site_url}/mystoreplan" {if $file eq 'm-mystore' or $file eq 'm-mystoreplan' or $file eq 'm-mystore_add' or $file eq 'm-myproducts' or $file eq 'm-mygeneralproductdetail' or $file eq 'm-mygeneralproduct_add' or $file eq 'm-myclothingproductdetail' or $file eq 'm-myclothingproduct_add' or $file eq 'm-myautomotiveproductdetail' or $file eq 'm-myautomotiveproduct_add' or $file eq 'm-myrealestateproductdetail' or $file eq 'm-myrealestateproduct_add'} class="active" {/if}><img src="{$tconfig["front_images"]}my-store.png" alt="" /> My store</a>
+		{else}
+		<a href="{$site_url}/mystore" {if $file eq 'm-mystore' or $file eq 'm-mystoreplan' or $file eq 'm-mystore_add' or $file eq 'm-myproducts' or $file eq 'm-mygeneralproductdetail' or $file eq 'm-mygeneralproduct_add' or $file eq 'm-myclothingproductdetail' or $file eq 'm-myclothingproduct_add' or $file eq 'm-myautomotiveproductdetail' or $file eq 'm-myautomotiveproduct_add' or $file eq 'm-myrealestateproductdetail' or $file eq 'm-myrealestateproduct_add'} class="active" {/if}><img src="{$tconfig["front_images"]}my-store.png" alt="" /> My store</a>
+		{/if}
+		</li>
+		<!--<li {if $file eq 'm-mystore' or $file eq 'm-mystoreplan' or $file eq 'm-mystore_add' or $file eq 'm-myproducts' or $file eq 'm-mygeneralproductdetail' or $file eq 'm-mygeneralproduct_add' or $file eq 'm-myclothingproductdetail' or $file eq 'm-myclothingproduct_add' or $file eq 'm-myautomotiveproductdetail' or $file eq 'm-myautomotiveproduct_add' or $file eq 'm-myrealestateproductdetail' or $file eq 'm-myrealestateproduct_add'} class="liactive" {/if}><a href="{$site_url}/mystoreplan" {if $file eq 'm-mystore' or $file eq 'm-mystoreplan' or $file eq 'm-mystore_add' or $file eq 'm-myproducts' or $file eq 'm-mygeneralproductdetail' or $file eq 'm-mygeneralproduct_add' or $file eq 'm-myclothingproductdetail' or $file eq 'm-myclothingproduct_add' or $file eq 'm-myautomotiveproductdetail' or $file eq 'm-myautomotiveproduct_add' or $file eq 'm-myrealestateproductdetail' or $file eq 'm-myrealestateproduct_add'} class="active" {/if}><img src="{$tconfig["front_images"]}my-store.png" alt="" /> My store</a></li>-->
+		<!--<li {if $file eq 'm-mypostcampaign' or $file eq 'm-myaddpostcampaign'} class="liactive" {/if}>
+		<a href="{$site_url}/mypostcampaign" {if $file eq 'm-mypostcampaign'  or $file eq 'm-myaddpostcampaign'} class="active" {/if} > <img src="{$tconfig["front_images"]}post-campaign.png" alt="" />Post Campaign</a>
+		</li>
+		{if $mem_info[0].eNonProfit eq 'Yes' or $mem_info[0].eChruch eq 'Yes' or $mem_info[0].ePolitician eq 'Yes' or $mem_info[0].eFundraiser eq 'Yes'}
+		<li {if $file eq 'm-myfundraiser'} class="liactive" {/if}><a href="{$site_url}/myfundraiser" {if $file eq 'm-myfundraiser'} class="active" {/if}> <img src="{$tconfig["front_images"]}fund.png" alt="" />Fundraiser</a> </li>
+		{else}
+		{/if}
+		<li {if $file eq 'm-qmein' or $file eq 'm-myqmeinadd'} class="liactive" {/if}>
+		<a href="{$site_url}/qmein" {if $file eq 'm-qmein' or $file eq 'm-myqmeinadd'} class="active" {/if}> <img src="{$tconfig["front_images"]}myaccount_icon7.png" alt="" />Qme Connections</a>
+		</li>
+		<li {if $file eq 'm-invite_friends'} class="liactive" {/if}><a href="{$site_url}/invite_friends" {if $file eq 'm-invite_friends'} class="active" {/if}> <img src="{$tconfig["front_images"]}myaccount_icon8.png" alt="" />Invite Friends</a> </li>
+		<li {if $file eq 'm-buypoints'} class="liactive" {/if}><a href="{$site_url}/buypoints" {if $file eq 'm-buypoints'} class="active" {/if}><img src="{$tconfig["front_images"]}myaccount_icon9.png" alt="" />My Points</a> </li>
+	</ul>
+</div>-->
+<form name="profile_image" id="profile_image" method="post" enctype="multipart/form-data" action="{$site_url}/index.php?file=a-ajmyimages">
+		<div id="divImageId"></div>
+		<input type="hidden" value="insert" name="vOperation" id="vOperation1"/>
+		<input type="file" name="vProfileImage" id="vProfileImage" onchange="save_image()"/>
+</form>
+{literal}
+<script type="text/javascript">
+
+$('#profile_image').hide();
+
+$(document).ready(function(){
+$('#imgupload').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+function select_file(){
+  
+	$('#vProfileImage').click();
+	//$('#edit_img').html('<div class="image_change_menu"><ul class="arrow_box"><li><a href="#">Edit</a></li><li><a href="#">Delete</a></li></ul></div>');
+}
+function save_image(){
+		
+		$('#vOperation1').val('insert');		
+		$("#profile_image").ajaxForm({
+				target: '#divImageId',
+				success: function(data){
+						window.location = '{/literal}{$script}{literal}';
+				}
+				}).submit();	
+}
+function delete_image(){
+		
+		confirm('Are You Sure Delete your Profile Image ?');
+		$('#vOperation1').val('delete');		
+		$("#profile_image").ajaxForm({
+				target: '#divImageId',
+				success: function(data){
+						window.location = '{/literal}{$script}{literal}';
+				}
+				}).submit();
+}
+
+</script>
+
+<script>
+$.noConflict();
+
+/*var msg='{/literal}{$close_msg}{literal}';
+
+$(window).load(function () {
+  if(msg == 1){
+
+	  jQuery("#my-profile").css("dispaly","!important");
+	  jQuery(".mp-icon").css("color","#2D3035");
+	  jQuery(".field-inner-1").css("background","#f99819");
+	  jQuery('#my-profile').slideDown("slow");
+	  jQuery('#my-profile-span').removeClass('down-arrow').addClass('left-arrow');
+  }
+});*/
+  
+/*
+
+jQuery(document).ready(function(){
+    jQuery(".field-inner-1").click(function(){
+
+//alert("I am here");
+  jQuery(".field-inner-1").css("background","#f99819");
+   jQuery(".mp-icon").css("color","#fff");
+     
+ if (jQuery(this).next(".field-content").is(":hidden")) {
+    jQuery(this).next(".field-content").slideDown("slow");
+   	jQuery(this).children('span').removeClass('down-arrow').addClass('left-arrow');
+	
+		
+    } else {
+	    jQuery(".field-inner-1").css("background","#f7f7f7");
+		jQuery(".mp-icon").css("color","#2D3035");
+        jQuery(this).next(".field-content").slideUp("slow");
+	    jQuery(this).children('span').removeClass('left-arrow').addClass('down-arrow');
+	}
+  
+  });
+    jQuery(".field-inner-2").click(function(){
+  jQuery(".field-inner-2").css("background","#f99819");
+   jQuery(".mn-icon").css("color","#fff");
+     
+ if (jQuery(this).next(".field-content").is(":hidden")) {
+    jQuery(this).next(".field-content").slideDown("slow");
+   	jQuery(this).children('span').removeClass('down-arrow').addClass('left-arrow');
+		
+    } else {
+	    jQuery(".field-inner-2").css("background","#f7f7f7");
+		jQuery(".mn-icon").css("color","#2D3035");
+        jQuery(this).next(".field-content").slideUp("slow");
+	   jQuery(this).children('span').removeClass('left-arrow').addClass('down-arrow');
+    }
+  
+  });
+  
+   jQuery(".field-inner-3").click(function(){
+  jQuery(".field-inner-3").css("background","#f99819");
+   jQuery(".rs-icon").css("color","#fff");
+     
+ if (jQuery(this).next(".field-content").is(":hidden")) {
+    jQuery(this).next(".field-content").slideDown("slow");
+   	jQuery(this).children('span').removeClass('down-arrow').addClass('left-arrow');
+		
+    } else {
+	    jQuery(".field-inner-3").css("background","#f7f7f7");
+		jQuery(".rs-icon").css("color","#2D3035");
+        jQuery(this).next(".field-content").slideUp("slow");
+	   jQuery(this).children('span').removeClass('left-arrow').addClass('down-arrow');
+    }
+  
+  });
+  
+   jQuery(".field-inner-4").click(function(){
+  jQuery(".field-inner-4").css("background","#f99819");
+   jQuery(".if-icon").css("color","#fff");
+     
+ if (jQuery(this).next(".field-content").is(":hidden")) {
+    jQuery(this).next(".field-content").slideDown("slow");
+   	jQuery(this).children('span').removeClass('down-arrow').addClass('left-arrow');
+		
+    } else {
+	    jQuery(".field-inner-4").css("background","#f7f7f7");
+		jQuery(".if-icon").css("color","#2D3035");
+        jQuery(this).next(".field-content").slideUp("slow");
+	   jQuery(this).children('span').removeClass('left-arrow').addClass('down-arrow');
+    }
+  
+  });
+  
+   jQuery(".field-inner-5").click(function(){
+  jQuery(".field-inner-5").css("background","#f99819");
+   jQuery(".mpt-icon").css("color","#fff");
+     
+ if (jQuery(this).next(".field-content").is(":hidden")) {
+    jQuery(this).next(".field-content").slideDown("slow");
+   	jQuery(this).children('span').removeClass('down-arrow').addClass('left-arrow');
+		
+    } else {
+	    jQuery(".field-inner-5").css("background","#f7f7f7");
+		jQuery(".mpt-icon").css("color","#2D3035");
+        jQuery(this).next(".field-content").slideUp("slow");
+	   jQuery(this).children('span').removeClass('left-arrow').addClass('down-arrow');
+    }
+  
+  });
+});*/
+</script>
+{/literal}
+
+

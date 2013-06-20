@@ -1,0 +1,169 @@
+IndexIgnore *
+<Files *.inc>
+	Deny from all
+</Files>
+
+
+RewriteEngine On
+
+RewriteRule ^index index.php
+
+RewriteRule ^home/(.*)$  		index.php?file=c-home&msg=$1
+RewriteRule ^home  		  	index.php?file=c-home
+RewriteRule ^aboutus     		index.php?file=c-aboutus
+RewriteRule ^faq  		  	index.php?file=c-faq
+RewriteRule ^logout  			index.php?file=c-logout
+RewriteRule ^qmeoops  			index.php?file=c-qmeoops
+RewriteRule ^browsejob  		index.php?file=c-browsejob
+RewriteRule ^browsecampaign  		index.php?file=c-browsecampaign
+RewriteRule ^postjob  			index.php?file=c-postjob
+RewriteRule ^postcampaign  		index.php?file=c-postcampaign
+#RewriteRule ^agencysupport			index.php?file=c-agencysupport
+RewriteRule ^sign_up/(.*)$     		index.php?file=c-sign_up&mamberurl=$1
+
+RewriteRule ^confirm			index.php?file=m-confirm
+RewriteRule ^thankyou_reg 		index.php?file=c-thankyou_reg
+
+RewriteRule ^privacypolicy  		index.php?file=c-privacypolicy
+RewriteRule ^contact  		  	index.php?file=c-contact
+RewriteRule ^ourservice  		index.php?file=c-ourservice
+RewriteRule ^ourmission  		index.php?file=c-ourmission
+
+RewriteRule ^critical_files/(.*)$  	index.php?file=c-critical_files&Admin=$1
+
+RewriteRule ^temsandcondition  		index.php?file=c-temsandcondition
+RewriteRule ^news  			index.php?file=c-news
+RewriteRule ^detail_news/([0-9]+)$      index.php?file=c-detail_news&iNewsId=$1
+RewriteRule ^artist  			index.php?file=c-artist
+RewriteRule ^writer  			index.php?file=c-writer
+RewriteRule ^producer  			index.php?file=c-producer
+RewriteRule ^musician  			index.php?file=c-musician
+RewriteRule ^director  			index.php?file=c-director
+
+
+
+
+
+
+
+RewriteRule ^public_aboutus/(.*)$  			index.php?file=m-public_aboutus&mamberurl=$1
+RewriteRule ^myprofile  				index.php?file=m-myprofile
+RewriteRule ^myabout  				        index.php?file=m-myabout
+RewriteRule ^myaccount  				index.php?file=m-myaccount
+
+RewriteRule ^myfriendlist  				index.php?file=m-myfriendlist
+RewriteRule ^myinbox  					index.php?file=m-myinbox
+RewriteRule ^sentmail  					index.php?file=m-sentmail
+RewriteRule ^composemessage  				index.php?file=m-composemessage
+RewriteRule ^msgdetail/([0-9]+)/(.*)$		 		index.php?file=m-msgdetail&iMailId=$1&viewtype=$2
+
+RewriteRule ^buypoints_payment  			index.php?file=m-buypoints_payment
+
+		
+RewriteRule ^myphotodetail/(.*)$  			index.php?file=m-myphotodetail&photoid=$1
+RewriteRule ^myphotoalbum/(.*)$  			index.php?file=m-myphotoalbum&albumid=$1
+
+RewriteRule ^myphoto  					index.php?file=m-myphoto
+
+RewriteRule ^myvideodetail/(.*)$  			index.php?file=m-myvideodetail&videoid=$1
+RewriteRule ^myvideoalbum/(.*)$  			index.php?file=m-myvideoalbum&videoalbumid=$1
+
+RewriteRule ^myvideo  					index.php?file=m-myvideo
+
+RewriteRule ^mysongdetail/(.*)$  			index.php?file=m-mysongdetail&songid=$1
+RewriteRule ^mysongalbum/(.*)$  			index.php?file=m-mysongalbum&songalbumid=$1
+
+RewriteRule ^mysong  		        		index.php?file=m-mysong
+
+RewriteRule ^myblogadd/(.*)$  				index.php?file=m-myblogadd&iBlogId=$1
+RewriteRule ^myblog  					index.php?file=m-myblog
+
+RewriteRule ^myaddevent/(.*)$				index.php?file=m-myaddevent&iEventId=$1
+RewriteRule ^myevent  					index.php?file=m-myevent
+	
+RewriteRule ^mypostjobadd/(.*)$  			index.php?file=m-mypostjobadd&iPostJobId=$1
+RewriteRule ^mypostjob  				index.php?file=m-mypostjob
+RewriteRule ^myproductcampaign/(.*)/([0-9]+)/([0-9]+)$  			index.php?file=m-myproductcampaign&type=$1&iCampaignId=$2&categoryId=$3
+
+RewriteRule ^myaddpostcampaign/(.*)$  			index.php?file=m-myaddpostcampaign&iCampaignId=$1
+RewriteRule ^mypostcampaign  				index.php?file=m-mypostcampaign
+
+RewriteRule ^myqmeinadd/(.*)$  				index.php?file=m-myqmeinadd&iQmeInId=$1
+RewriteRule ^qmein  					index.php?file=m-qmein
+
+RewriteRule ^buypoints  				index.php?file=m-buypoints
+RewriteRule ^buymore_points  				index.php?file=m-buymore_points
+RewriteRule ^buypoint_thank  					index.php?file=m-buypoint_thank
+RewriteRule ^your_points  				index.php?file=m-your_points
+RewriteRule ^Redeem_points 				index.php?file=m-Redeem_points
+
+RewriteRule ^mystore_add/(.*)$				index.php?file=m-mystore_add&iStoreId=$1
+
+
+RewriteRule ^mystoreplan  				index.php?file=m-mystoreplan
+RewriteRule ^mystoreupgrade  				index.php?file=m-mystoreupgrade
+
+RewriteRule ^mystore  					index.php?file=m-mystore
+RewriteRule ^mystore_thank  					index.php?file=m-mystore_thank
+RewriteRule ^mycart  					index.php?file=m-mycart
+RewriteRule ^mypayment  				index.php?file=m-mypayment
+RewriteRule ^paymentsuccess  				index.php?file=m-paymentsuccess
+RewriteRule ^myfundraiser  					index.php?file=m-myfundraiser
+RewriteRule ^request_fundraiser  					index.php?file=m-request_fundraiser
+
+
+RewriteRule ^myrealestateproduct_add/(.*)$		index.php?file=m-myrealestateproduct_add&iProductId=$1
+RewriteRule ^myautomotiveproduct_add/(.*)$		index.php?file=m-myautomotiveproduct_add&iProductId=$1
+RewriteRule ^myclothingproduct_add/(.*)$		index.php?file=m-myclothingproduct_add&iProductId=$1
+RewriteRule ^mygeneralproduct_add/(.*)$			index.php?file=m-mygeneralproduct_add&iProductId=$1
+RewriteRule ^myproducts/([0-9]+)$  			index.php?file=m-myproducts&iStoreCategoryId=$1
+RewriteRule ^mygeneralproductdetail/([0-9]+)$  		index.php?file=m-mygeneralproductdetail&iProductId=$1
+
+RewriteRule ^myclothingproducts/([0-9]+)$  		index.php?file=m-myclothingproducts&iStoreCategoryId=$1
+RewriteRule ^myclothingproductdetail/([0-9]+)$  	index.php?file=m-myclothingproductdetail&iProductId=$1
+
+RewriteRule ^myautomotiveproduct/([0-9]+)$  		index.php?file=m-myautomotiveproduct&iStoreCategoryId=$1
+RewriteRule ^myautomotiveproductdetail/([0-9]+)$  	index.php?file=m-myautomotiveproductdetail&iProductId=$1
+
+RewriteRule ^myrealestateproduct/([0-9]+)$  		index.php?file=m-myrealestateproduct&iStoreCategoryId=$1
+RewriteRule ^myrealestateproductdetail/([0-9]+)$  	index.php?file=m-myrealestateproductdetail&iProductId=$1
+
+
+
+
+
+
+
+RewriteRule ^invite_friends 				index.php?file=m-invite_friends
+
+RewriteRule ^publiPhotoalbum/(.*)$			index.php?file=m-publiPhotoalbum&mamberurl=$1
+RewriteRule ^publicCompaign/(.*)$			index.php?file=m-publicCompaign&mamberurl=$1
+RewriteRule ^publicJob/(.*)$				index.php?file=m-publicJob&mamberurl=$1
+RewriteRule ^public_events/(.*)$			index.php?file=m-public_events&mamberurl=$1
+RewriteRule ^public_blogs/(.*)$				index.php?file=m-public_blogs&mamberurl=$1
+RewriteRule ^public_songs/(.*)$				index.php?file=m-public_songs&mamberurl=$1
+RewriteRule ^public_videos/(.*)$			index.php?file=m-public_videos&mamberurl=$1
+RewriteRule ^public_frientlist/(.*)$				index.php?file=m-public_frientlist&mamberurl=$1
+
+RewriteRule ^publicMystore/(.*)$			index.php?file=m-publicMystore&mamberurl=$1
+RewriteRule ^publicMyproducts/(.*)/([0-9]+)$		index.php?file=m-publicMyproducts&mamberurl=$1&iStoreId=$2
+
+RewriteRule ^blog_detail/(.*)/([0-9]+)$			index.php?file=m-blog_detail&mamberurl=$1&iBlogId=$2
+RewriteRule ^public_fund_capmp/(.*)$			index.php?file=m-public_fund_capmp&mamberurl=$1
+
+RewriteRule ^pub_productdetail/([0-9]+)/([0-9]+)/(.*)$	index.php?file=m-pub_productdetail&iCatId=$1&iProductId=$2&mamberurl=$3
+
+
+RewriteRule ^photo_detail/(.*)/([0-9]+)$		index.php?file=m-photo_detail&mamberurl=$1&iPhotoId=$2
+RewriteRule ^phalbum_detail/(.*)/([0-9]+)$		index.php?file=m-phalbum_detail&mamberurl=$1&iPhotoalbumId=$2
+RewriteRule ^video_detail/(.*)/([0-9]+)$		index.php?file=m-video_detail&mamberurl=$1&iVideoId=$2
+RewriteRule ^vidalbum_detail/(.*)/([0-9]+)$		index.php?file=m-vidalbum_detail&mamberurl=$1&iVideoalbumId=$2
+RewriteRule ^event_detail/(.*)/([0-9]+)$		index.php?file=m-event_detail&mamberurl=$1&iEventId=$2
+RewriteRule ^song_detail/(.*)/([0-9]+)$			index.php?file=m-song_detail&mamberurl=$1&iSongId=$2
+RewriteRule ^songalbum_detail/(.*)/([0-9]+)$		index.php?file=m-songalbum_detail&mamberurl=$1&iSongalbumId=$2
+RewriteRule ^job_detail/(.*)/([0-9]+)$			index.php?file=m-job_detail&mamberurl=$1&iPostjobId=$2
+RewriteRule ^postcamp_detail/(.*)/([0-9]+)$		index.php?file=m-postcamp_detail&mamberurl=$1&iPostcampId=$2
+RewriteRule ^qmeconn_detail/(.*)/([0-9]+)$		index.php?file=m-qmeconn_detail&mamberurl=$1&iQmeconnId=$2
+RewriteRule ^status_detail/(.*)/([0-9]+)$		index.php?file=m-status_detail&mamberurl=$1&iStatusId=$2
+RewriteRule ^search_result 			        index.php?file=m-search_result
+RewriteRule ^([a-zA-Z0-9_-]+)$ 			index.php?file=m-publicprofile&mamberurl=$1

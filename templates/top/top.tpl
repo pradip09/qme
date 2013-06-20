@@ -1,0 +1,745 @@
+<script type="text/javascript" src="{$tconfig["tsite_url"]}/public/javascript/modernizr.js"></script>
+<link rel="stylesheet" href="{$tconfig["tsite_url"]}/public/nivoslider/default.css" type="text/css" />
+<link rel="stylesheet" href="{$tconfig["tsite_url"]}/public/nivoslider/light.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$tconfig["tsite_url"]}/public/nivoslider/dark.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$tconfig["tsite_url"]}/public/nivoslider/bar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$tconfig["tsite_url"]}/public/nivoslider/nivo-slider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{$tconfig["tsite_url"]}/public/nivoslider/jquery.nivo.slider.js"></script>
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ajax/jlogin.js"></script>
+<script type="text/javascript" language="JavaScript" src="{$tconfig["front_javascript"]}DD_roundies_0.0.2a.js"></script>
+<script language="text/JavaScript" src="{$tconfig["front_javascript"]}ajax/jquery.form.js"></script>
+<script language="text/JavaScript" src="{$tconfig["front_javascript"]}ajax/jmainajax.js"></script>
+<link rel="stylesheet" type="text/css" href="{$tconfig["tsite_url"]}/public/css/dropdown.css">
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ajax/login.js"></script>
+<script type="text/javascript" language="JavaScript" src="{$tconfig["front_javascript"]}jsapi.js"></script>
+<script type="text/javascript" language="JavaScript" src="{$tconfig["front_javascript"]}jquery.watermark.js"></script>
+
+
+<script type="text/javascript">
+	// ** DEMO 1 *************
+
+	// ** DEMO 5 *************
+	$(function () {
+		$("#confPassword").watermark("Confirm Password");
+		$("#vPassword").watermark("Password");
+		$("#Password").watermark("Password");
+	});
+
+</script>
+
+
+<script type="text/javascript">
+
+	DD_roundies.addRule('.singbox', '10 10px 10px 10px');	
+</script>
+
+
+
+{if $file eq 'c-home' or $file eq ''}
+<div class="innerbg1">
+<div class="bgrepearheader">
+<div>
+<!--header part start here -->
+<div class="fix_width">
+	<div id="header">
+		<div class="grid_2 alpha" id="header_left">
+			<div id="logo"> <a href="{$site_url}/home" class="btnlogo"></a> </div>
+			<!--logo div ends-->
+		</div>
+		<!--header left portion-->
+		<div class="grid_4" id="leftnav">
+			<div class="nav">
+				<ul>
+					<li><a href="{$site_url}/qmeoops">QME Search</a></li>
+					<li><a href="{$site_url}/faq" class="active1">FAQ</a></li>
+					<li><a href="{$site_url}/agencysupport">AGENCY SERVICES</a></li>
+					
+				</ul>
+			</div>
+			<!--nav ends here-->
+		</div>
+		<!--leftnav ends here-->
+		{if $iUserId eq ''}
+		<div class="grid_3 omega push_3" id="header_right">
+			<div class="nav right">
+				<ul>
+					<li><a href="#Register" id="register" class="active1">Sign up</a></li>
+					<li><a href="#SignIn" id="signin"> Sign in</a></li>
+				</ul>
+			</div>
+			<!--nav ends here-->
+
+		</div>
+                
+		{else}
+		<div class="grid_3 omega push_3" id="header_right">
+			<div class="nav right">
+				<ul>
+					<li>{if $file eq 'm-publicprofile' or $file eq 'c-home'} <a href="{$site_url}/myaccount">MY ACCOUNT</a> {else} <a href="{$site_url}/{$mem_info[0].vMemberUrl}">MY PUBLIC PROFILE</a> {/if} </li>
+					<li><a href="{$site_url}/mycart" ><span id="totcartid">MYCART({$sess_total_product})</span></a></li>
+					<li class="last"><a href="{$site_url}/logout">LOGOUT</a> </li>
+				</ul>
+				
+			</div>
+			<!--nav ends here-->
+		</div>
+		<div id="searchmsg" class="errormsg" style="text-align:left;line-height:28px; position:absolute; top:36px; right:110px; color:red; font-size:14px;font-weight:normal;"></div>	
+       <div class="search_box">
+		  <span id="search-page-border">
+	     <div id="loginContainer">
+                <a href="#" id="loginButton">
+			{if $type !=''}
+			<span id="search_type">{$type}</span>
+			{else}
+			<span id="search_type">QME Search</span>
+			{/if}
+		</a>
+                <div id="loginBox">
+			
+                    <ul class="dropdown-menu">
+					<li><a href="javascript:void(0);" id="Anything" onclick="selectmode('campaign');" >QME Search</a></li>
+					<li><a href="javascript:void(0);" id="People" onclick="selectmode('member');">People</a></li>
+					<li><a href="javascript:void(0);" id="Business" onclick="selectmode('bizmember');">Business</a></li>
+				</ul>
+		    
+                </div>
+            </div>		
+		
+		<div>
+			<input id="searchqme" name="searchqme" type="text" placeholder="Get paid to Search with QME" value="{$keyword}"/>
+		</div>
+		<!--<div style="float:left; width:38px;"><a href="javascript:void(0);" onclick="searchqme(this.value);"><img src="{$tconfig["front_images"]}/search_go_btn.png" alt="" width="38" height="35"  style="padding-left:0;" /></a></div>-->
+		
+		
+		<input type="hidden" name="searchmode" id="searchmode" value="">
+		<input type="hidden" name="search_type" id="search_type" value="">	
+		</span>
+		 <input type="submit" name="search-submit" id="search-submit" value="Search" onclick="searchqme(this.value);"/>
+	</div>
+		{/if}
+		<!--header left portion-->
+	
+		<div class="clear"></div>
+	</div>
+	<!-- end .grid_12 for header area -->
+	<div class="clear"></div>
+    </div>
+
+<div class="banner_box">
+	{if $db_topban|@count gt 0}
+	<div class="home_header_text">		
+		        {if $db_topban|@count eq 1}
+			<img src="{$tconfig["tsite_upload_images_banner"]}/{$db_topban[0].vImage}" data-thumb="{$tconfig["tsite_upload_images_banner"]}/{$db_topban[0].vImage}"  alt="" title="" />
+			{/if}
+		<div id="slider" class="slider-wrapper theme-default">
+			{if $db_topban|@count gt 1}
+			{section name=i loop=$db_topban}
+			<img src="{$tconfig["tsite_upload_images_banner"]}/{$db_topban[i].vImage}" data-thumb="{$tconfig["tsite_upload_images_banner"]}/{$db_topban[i].vImage}"  alt="" title="" />
+			<!--<img src="{$tconfig["front_images"]}bannerscroll3.jpg" data-thumb="{$tconfig["front_images"]}bannerscroll3.jpg" alt="" title=""  />
+			<img src="{$tconfig["front_images"]}bannerscroll2.jpg" data-thumb="{$tconfig["front_images"]}bannerscroll2.jpg" alt="" title="" />-->
+		        {/section}
+	                {/if}
+		</div>
+	</div>
+      {/if}
+</div>
+{else}
+<div class="innerbg">
+<div id="main_wrapper">
+<div class="fix_width">
+	<div id="header">
+		<div class="grid_2 alpha" id="header_left">
+			<div id="logo"> <a href="{$site_url}/home" class="btnlogo"></a> </div>
+			<!--logo div ends-->
+		</div>
+		<!--header left portion-->
+		<div class="grid_4" id="leftnav">
+			<div class="nav">
+				<ul>
+					<li><a href="{$site_url}/qmeoops">QME Search</a></li>
+					<li><a href="{$site_url}/faq" class="active1">FAQ</a></li>
+					<li><a href="{$site_url}/agencysupport">AGENCY SERVICES</a></li>
+				</ul>
+			</div>
+			<!--nav ends here-->
+		</div>
+		<!--leftnav ends here-->
+		{if $iUserId eq '' && $file neq 'c-sign_up'}
+		<div class="grid_3 omega push_3" id="header_right">
+			<div class="nav right">
+				<ul>
+					<li><a href="#Register" id="register" class="active1">Sign up</a></li>
+					<li><a href="#SignIn" id="signin"> Sign in</a></li>
+				</ul>
+			</div>
+			<!--nav ends here-->
+		</div>
+		{else}
+		<div class="grid_3 omega push_3" id="header_right">
+			<div class="nav right">
+				<ul>
+					<li> {if $file eq 'm-publicprofile' or $file eq 'c-home'} <a href="{$site_url}/myaccount">MY ACCOUNT</a> {else} <a href="{$site_url}/{$mem_info[0].vMemberUrl}">MY PUBLIC PROFILE</a> {/if} </li>
+				<li> <a href="{$site_url}/mycart" ><span id="totcartid">MYCART({$sess_total_product})</span></a> </li>
+				<li class="last"><a href="{$site_url}/logout">LOGOUT</a> </li>
+				</ul>
+			</div>
+			<!--nav ends here-->
+		</div>
+	<!--search box starts-->	
+	<div id="searchmsg" class="errormsg" style="text-align:left;line-height:28px; position:absolute; top:36px; right:154px; color:red; font-size:14px;font-weight:normal;"></div>
+	<div class="search_box">
+		  <span id="search-page-border">
+	     <div id="loginContainer">
+                <a href="#" id="loginButton">
+			{if $type !=''}
+			<span id="search_type">{$type}</span>
+			{else}
+			<span id="search_type">QME Search</span>
+			{/if}
+		</a>
+                <div id="loginBox">
+			
+                    <ul class="dropdown-menu">
+					<li><a href="javascript:void(0);" id="Anything" onclick="selectmode('campaign');" >QME Search</a></li>
+					<li><a href="javascript:void(0);" id="People" onclick="selectmode('member');">People</a></li>
+					<li><a href="javascript:void(0);" id="Business" onclick="selectmode('bizmember');">Business</a></li>
+				</ul>
+		    
+                </div>
+            </div>		
+		
+		<div>
+			<input id="searchqme" name="searchqme" type="text" placeholder="Get paid to Search with QME" value="{$keyword}" />
+		</div>
+		
+		<!--<div style="float:left; width:38px;">
+		<input type="submit" value="search" class="btn" src="{$tconfig["front_images"]}/search_go_btn.png" alt=""  onclick="searchqme();" title="search"/>
+		</div>-->
+		
+		<input type="hidden" name="searchmode" id="searchmode" value="">
+		<input type="hidden" name="search_type" id="search_type" value="">	
+		 </span>
+		 <input type="submit" name="search-submit" id="search-submit" value="Search" onclick="searchqme(this.value);"/>
+	</div>
+	
+       <!--search box ends-->
+		{/if}
+		<!--header left portion-->
+		<div class="clear"></div>
+	</div>
+	<!-- end .grid_12 for header area -->
+	<div class="clear"></div>
+</div>
+
+
+
+{/if}
+<!--header part end here -->
+<div class="cl"></div>
+<!----SIGN IN POP UP stsrt---->
+<div style="display:none;">
+	<div  id="SignIn" class="signing" style="padding-bottom:15px;">
+		<div id="loginmsgid" style="text-align:center;line-height:24px;color:red; font-size:18px;"></div>
+		<div class="singheader"><img src="{$tconfig["front_images"]}user-login.png" width="161" height="38" alt="" /></div>
+		<input type="hidden" id="url" value="{$url}" >
+		<input name="vEmail" id="vEmail" class="singinput" type="text"  placeholder="E-mail" tabindex="1" value="{if $cookie_name neq ''}{$cookie_name}{/if}" />
+		<input name="vPassword" id="vPassword" class="singinput" type="password" placeholder="Password" tabindex="2" value="{if $cookie_password neq ''}{$cookie_password}{/if}"/>
+
+		
+		
+		<div class="singwith">
+			<div class="divleft">
+				<div style="float: left;padding-bottom: 2px;vertical-align: middle;width: 19px;">
+					<input name="remember" id="remember" type="checkbox"  tabindex="3" {if $cookie_check eq 1}checked{/if}/>
+				</div>
+				<label for="radio" > Remember me </label>
+			</div>
+			<div class="divright"> <a href="#Forgotpass" id="forgotpass" tabindex="4">Forgot your password ?</a> </div>
+		</div>
+		<div class="singbox">
+			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td><img src="{$tconfig["front_images"]}img2..png" width="57" height="50" alt="" /></td>
+					<td align="right"><a href="javascript:void(0);" onclick="validateform();" tabindex="5"><img src="{$tconfig["front_images"]}login.png" /></a></td>
+					{literal}
+					<script type="text/javascript">
+			if('{/literal}{$UserId}{literal}' == '')
+			{
+				$(document).keypress(function(e) {
+			if(e.which == 13) {
+			validateform();
+			}
+			});
+			}
+			</script>
+					{/literal} </tr>
+			</table>
+		</div>
+		<div class="singwith" style="margin-top:18px;">
+			<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="singtext">Connect + Living + Business + Entertain = You</td>
+					<!--<td width="2%"><img src="{$tconfig["front_images"]}icon1.png" width="20" height="13" alt="" /></td>
+					<td class="singtext"> Follow MYQME Social</td>
+					<td width="2%"><img src="{$tconfig["front_images"]}icon2.png" width="16" height="16" alt="" /></td>
+					<td class="singtext">Like MYQME Social</td>-->
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!----Sign In popup end---->
+<!--registration popup start-->
+<div id="fb-root"></div>
+<div style="display:none;" id="reg">
+	<div id="Register" class="registerbg">
+		<div id="registerwhitebg">
+			<div id="regmsgid" style="text-align:center;line-height:24px; color:red; font-size:18px;"></div>
+			<div class="registertopbg">
+				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="50%" class="rightborder"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="17%" align="center"><img src="{$tconfig["front_images"]}img_2.png" width="24" height="23" alt="" /></td>
+									<td width="68" align="center"><img src="{$tconfig["front_images"]}img_3.png" width="47" height="52" alt="" /></td>
+									<td class="greentext">Create Your Free Account</td>
+								</tr>
+							</table></td>
+						<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="17%" align="center"><img src="{$tconfig["front_images"]}img_4.png" width="26" height="23" alt="" /></td>
+									<td width="68" align="center"><img src="{$tconfig["front_images"]}img_5.png" alt="" /></td>
+									<td class="graytext"><div class="texta"><a href="#" id='Fblogin'>Sign in with Facebook</a></div></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<div class="arrowwhite"><img src="{$tconfig["front_images"]}arrow.png" width="16" height="12" alt="" /></div>
+			</div>
+			<table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="45%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="50%"><input name="vFirstName" id="vFirstName" type="text" class="registerinput" placeholder="First name" /></td>
+								<td><input name="vLastName" id="vLastName" type="text" class="registerinput" placeholder="Last name" /></td>
+							</tr>
+						</table>
+						<input id="vEmailId" name="vEmailId" type="text" class="registerinput1" placeholder="Email" />
+						<input name="Password" id="Password" type="password" class="registerinput1" placeholder="Password" />
+						<input name="confPassword" id="confPassword" type="password" class="registerinput1" placeholder="Confirm Password" />
+						<div class="singbox" style="margin-top: 15px; width: 371px; padding:4px 0px;">
+							<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="75%" class="registerwhitetext">By clicking 'Create Account' you agree to<br />
+										the <strong><a href="#Term" id="term" >Terms of Service and Privacy policies.</a></strong><br /></td>
+									<td width="25%" align="right"><a href="#" onclick="validateregform();" ><img src="{$tconfig["front_images"]}create-account.png"/></a></td>
+								</tr>
+							</table>
+						</div></td>
+					<td align="center"><img src="{$tconfig["front_images"]}img5.png" width="220" height="177" alt="" /></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!--registrationpopup end here-->
+<!---forgot password Popup start here--->
+
+<div style="display:none;">
+	<div id="Term" class="readpoppup" style="position:relative;">
+<div >
+<a href="#Register" id="signup123"><div style="position:absolute; right:-4px; top:-4px;  z-index:9999999999999999;"><img src="{$tconfig["front_images"]}close.png" alt="" /></div></a>
+</div>
+		
+		<div style="height:255px; overflow-y:scroll;" >
+		
+			<div class="popupheadding">Terms and Conditions</div>
+			{if  $db_term|@count gt 0}
+			{section name=i loop=$db_term}
+			<div class="popuptext"> {$db_term[i].lContents} </div>
+			{/section}
+			{else}
+			{/if}
+		</div>
+	</div>
+	{literal}
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$('#signup123').fancybox({
+			'overlayShow'	: true,
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic',
+			'margin' : '0',
+			'padding' : '0',
+			'scrolling' : 'no'
+		});
+		});
+	</script>
+	{/literal}
+</div>
+
+
+<div style="display:none;">
+	<div id="Forgotpass" class="signing" style="padding-bottom:15px;">
+		<div id="forgetmsg" style="text-align:center;line-height:24px; color:red; font-size:18px;"></div>
+		<div class="singheader"><img src="{$tconfig["front_images"]}forgot.png"  alt="" /></div>
+		<input name="vEmailForget" id="vEmailForget" class="singinput" type="text" placeholder="Enter email you use to setup your account" />
+		<div class="singbox">
+			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td><img src="{$tconfig["front_images"]}img2..png" width="57" height="50" alt="" /></td>
+					<td align="right"><a href="#" onclick="validateforget();"><img src="{$tconfig["front_images"]}submit.png"/></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!--forgot password popup end here-->
+	
+{literal}
+<script type="text/javascript">
+
+function validateform(){
+    
+
+	$("#loginmsgid").removeClass('popup-err').addClass('errormsg').text('Validating....').fadeIn(1000);
+	var extra='';
+	if($('#vEmail')){
+		if($('#vEmail').val() ==''){
+			$("#loginmsgid").html('Please enter your Mail-Id').addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			var vEmail = $('#vEmail').val();
+			var msg = isValidEmail(vEmail);
+			if(msg !='0'){
+				$("#loginmsgid").html(msg).addClass('errormsg').fadeTo(900,1);
+				return false;
+			}else{
+				extra+='&vEmail='+vEmail;
+			}
+		}
+	}
+	if($('#vPassword')){
+		if($('#vPassword').val() ==''){
+			$('#loginmsgid').html("Please enter your password").addClass('errormsg_login').fadeTo(900,1);
+			return false;
+		}else{
+			 var vPassword = $('#vPassword').val();
+			extra+='&vPassword='+vPassword;
+		}
+	}
+	
+	if($('#remember'))
+	{
+		if ($('#remember').is(':checked')) {
+				remember.value='Yes';
+		} else {
+				remember.value='No';
+		}
+		extra+='&remember='+remember.value;
+	}
+	
+	var url2 = $('#url').val();
+	
+	
+	
+    var url = site_url+"/index.php?file=a-ajlogin";
+    var pars = extra;
+	$.post(url+pars,
+            function(data) {
+                var khtml = data;
+		//alert(khtml);
+		if(data == 'success')
+		{
+			if(url2 == ''){
+				window.location=site_url+"/myaccount/";	
+			}else{
+				//alert(window.location);
+				
+				window.location=url2;
+				
+			}
+			
+		}
+		else
+		{
+		    $('#loginmsgid').html(data);
+		}
+		    
+		
+       });
+}
+
+function validateregform(){
+	$("#regmsgid").removeClass('popup-err').addClass('errormsg').fadeIn(1000);
+	var extra='';
+	if($('#vFirstName')){
+		if($('#vFirstName').val() ==''){
+			$('#regmsgid').html("Please enter First Name").addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			 var vFirstName = $('#vFirstName').val();
+			extra+='&vFirstName='+vFirstName;
+		}
+	}
+	if($('#vLastName')){
+		if($('#vLastName').val() ==''){
+			$('#regmsgid').html("Please enter Last Name").addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			 var vLastName = $('#vLastName').val();
+			extra+='&vLastName='+vLastName;
+		}
+	}
+	if($('#vEmailId')){
+		if($('#vEmailId').val() ==''){
+			$("#regmsgid").html('Please enter email').addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			var vEmailId = $('#vEmailId').val();
+			var msg = isValidEmail(vEmailId);
+			if(msg !='0'){
+				$("#regmsgid").html(msg).addClass('errormsg').fadeTo(900,1);
+				return false;
+			}else{
+				extra+='&vEmailId='+vEmailId;
+			}
+		}
+	}
+	if($('#Password')){
+		if($('#Password').val() ==''){
+			$('#regmsgid').html("Please enter your password").addClass('errormsg').fadeTo(900,1);
+			return false;
+		}
+	}
+	
+	if($('#confPassword')){
+		if($('#confPassword').val() ==''){
+			$('#regmsgid').html("Please enter your password confirm").addClass('errormsg').fadeTo(900,1);
+			return false;
+		}
+	}
+	if($('#Password').val() != $('#confPassword').val()){
+		$('#regmsgid').html("Password do not match").addClass('errormsg').fadeTo(900,1);
+		return false;
+	}else{
+		
+		var confPassword = $('#confPassword').val();
+		var Password = $('#Password').val();
+		extra+='&Password='+Password;
+	}
+	
+	//alert(extra);
+	
+	var url = site_url+"/index.php?file=a-ajregister";
+	var pars = extra; 
+	$.post(url+pars,
+            function(data) {
+                 var htmll = '<div style="text-align:center;">Go to your email to confirm your MYQME account.</div>';
+                //$('#productlist_loading').hide();
+                var khtml = data;
+		if(data == 'success')
+		{ $('#vFirstName').val('');
+		    $('#vLastName').val('');
+		    $('#vEmailId').val('');
+		    $('#Password').val('');
+		    $('#confPassword').val('')
+		html='';
+		html+='<div class="popup_box" style="height:auto;width:627px;">';
+		html+='<div class="errormsg_login" style="font-size:17px;text-align:center;color:green;font-weight: bold;">';
+		html+=htmll;
+		html+='</div>';
+		html+='</div>';
+		$(document).ready(function () {                                
+		       $.fancybox(html,{'modal':false,'margin' : '0','padding' : '0','scrolling' : 'no'});
+	       });
+		//$('#regmsgid').html('Go to your email to confirm your MYQME account.');
+		}
+		else{
+		     $('#vFirstName').val('');
+		    $('#vLastName').val('');
+		    $('#vEmailId').val('');
+		    $('#Password').val('');
+		    $('#confPassword').val('')
+		    $('#regmsgid').html(data);
+		    }
+		
+		   
+		
+		
+       });
+}
+
+
+function validateforget(){
+	$("#forgetmsg").removeClass('popup-err').addClass('errormsg').text('Validating....').fadeIn(1000);
+	var extra='';
+	if($('#vEmailForget')){
+		if($('#vEmailForget').val() ==''){
+			$("#forgetmsg").html('Please enter your EmailId').addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			var vEmailForget = $('#vEmailForget').val();
+			var msg = isValidEmail(vEmailForget);
+			if(msg !='0'){
+				$("#forgetmsg").html(msg).addClass('errormsg').fadeTo(900,1);
+				return false;
+			}else{
+				extra+='&vEmailForget='+vEmailForget;
+			}
+		}
+	}
+	//alert(extra);
+    var url = site_url+"/index.php?file=a-ajforget";
+    var pars = extra;
+    
+	$.post(url+pars,
+            function(data) {
+                var khtml = data;
+		$('#vEmailForget').val('');
+		$('#forgetmsg').html(data);
+       });
+}
+
+
+
+
+$(document).ready(function(){
+$('#signin').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+$(document).ready(function(){
+$('#forgotpass').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+$(document).ready(function(){
+$('#register').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+$(document).ready(function(){
+$('#term').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'showCloseButton' : false,
+	'padding' : '0',
+	'scrolling' : 'no'
+});
+});
+
+//$('#fancybox-close').fancybox.close();
+
+</script>
+<script>
+var FB_APPID = '{/literal}{$FB_APPID}{literal}';
+
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : FB_APPID, 
+      status     : true, 
+      cookie     : true, 
+      xfbml      : true  
+    });
+  };
+
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+   
+   $('#Fblogin').live('click',function(){
+	FB.login(function(response) {
+       if (response.authResponse) {
+         fbsignup(response.authResponse.accessToken);
+       } 
+     }, {scope: 'email,offline_access'});
+   });
+   
+   function fbsignup(accesstoken) {		
+		
+		var extra ='';
+		extra+='&type=fb&uid='+FB.getUserID();
+		extra+='&accesstoken='+accesstoken;
+		
+		var url = site_url+"/index.php?file=a-ajlogin";
+		var pars = extra; 
+		$.post(url+pars, function(data) {
+			var khtml = data;
+			
+			window.location='{/literal}{$site_url}{literal}'+'/myaccount/';
+	    });
+	}
+
+
+
+$(document).ready(function(){
+
+if(!Modernizr.input.placeholder){
+
+	$('[placeholder]').focus(function() {
+	  var input = $(this);
+	  if (input.val() == input.attr('placeholder')) {
+		input.val('');
+		input.removeClass('placeholder');
+	  }
+	}).blur(function() {
+	  var input = $(this);
+	  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		input.addClass('placeholder');
+		input.val(input.attr('placeholder'));
+	  }
+	}).blur();
+	$('[placeholder]').parents('form').submit(function() {
+	  $(this).find('[placeholder]').each(function() {
+		var input = $(this);
+		if (input.val() == input.attr('placeholder')) {
+		  input.val('');
+		}
+	  })
+	});
+
+}
+
+});
+
+
+</script>
+<script>
+$(document).ready(function() {
+		$('.btnget,.btnlogo,.btnfeedback,.btnlearn,.btnlearnsm').append('<span class="hover"></span>').each(function () {
+	  		var $span = $('> span.hover', this).css('opacity', 0);
+	  		$(this).hover(function () {
+	    		$span.stop().fadeTo(600, 1);
+	 		}, function () {
+	   	$span.stop().fadeTo(500, 0);
+	  		});
+		});
+	});
+
+</script>
+{/literal} 

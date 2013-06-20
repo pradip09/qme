@@ -1,0 +1,130 @@
+<div id="services_box" class="desboard_body">
+				<div class="desboard-left">
+					<div class="user_name_myaccount">
+								<div class="user_photo"><a href="#">
+								{if $vProfileImage eq ''}
+								<img src="{$tconfig["front_images"]}user_img.png" alt="" />
+								{else}
+								<img src="{$tconfig["tsite_upload_images_member"]}/{$mem_info[0].iMemberId}/2_{$mem_info[0].vProfileImage}" alt="" />
+								{/if}
+								</a></div>
+								{$Name}
+				
+					</div>
+					<div class="cl"></div>
+					
+					
+					
+					{include file="member/myaccountleft.tpl"}
+					
+				</div>
+				<div class="desboard-right">
+
+<div class="leftf">
+<div class="banner8">
+<div class="hostingbannerCon">
+<h1>QME Fundraiser. Donation . Support Me . Campaigns</h1>
+<h2>The Most Ideal Compaign Solutions Available</h2>
+<div class="bg1">Are you Church, Non Profit or a Pilitician looking To drive a no hasule hight Result Camapign? QME can help We Have the best Comprehensive Resource that will drive you next Successfull Campaign.</div>
+<div class="freeSetup">&nbsp;</div>
+</div>
+<div class="btn8"><a href="#"><img src="images/btn1.png" width="186" height="43" alt="" /></a><a href="#"><img src="images/btn2.png" width="173" height="43" alt="" /></a></div>
+</div>
+
+
+
+
+
+
+<div class="bgline8">
+<div class="bgtop8">
+
+	<div class="bgbox8">
+	
+	<div class="featureBoxLeft">
+	<h3>Marketing Consultations</h3>
+	<ul class="featureBoxUl">
+          <li class="nopaddingTop noPaddingli">Design & Creative of your campaign </li>
+          <li>Strategy expertise to create your 
+next campaign communication</li>
+
+        </ul>
+	   <div class="featureBoxRight"><img src="images/img1.png" width="62" height="62" alt="" /></div>
+	</div>
+	
+	</div>
+	
+	<div class="bgboxright">
+	
+	<div class="featureBoxLeft">
+	<h3>Print and Branded Products Fulfillment</h3>
+	<ul class="featureBoxUl">
+          <li class="nopaddingTop noPaddingli">Promotional branded products manuf-
+acturing mugs, bags, T- Shirts,vehicle 
+wraps, yard signs </li>
+          <li>Promotional branded products manufa-
+cturing mugs, bags, T- Shirts, vehicle 
+wraps, yard signs </li>
+          <li>On demand print and promotional product manufacturing – QME has the capability to customize every printed and promotional item you distribute. 	</li>
+        </ul>
+	   <div class="featureBoxRight"><img src="images/img2.png" width="62" height="62" alt="" /></div>
+	</div>
+	
+	</div>
+	<div class="cl"></div>
+	</div>
+	
+	
+	<div class="bgtop8">
+
+	<div class="bgbox8">
+	
+	<div class="featureBoxLeft">
+	<h3>Media Intergration. Technology</h3>
+	<ul class="featureBoxUl">
+          <li class="nopaddingTop noPaddingli">Video commercial production</li>
+          <li>Radio ad & jingles production</li>
+          <li>Inline commercial upload directly to 
+campaign interface
+<li>Inline supporters share, comment, with friends & 
+network</li>
+        </ul>
+	   <div class="featureBoxRight"><img src="images/img3.png" width="62" height="62" alt="" /></div>
+	</div>
+	
+	</div>
+	
+	<div class="bgboxright">
+	
+	<div class="featureBoxLeft">
+	<h3>Integrated Management & Support</h3>
+	<ul class="featureBoxUl">
+          <li class="nopaddingTop noPaddingli">On demand print request, manufacturing 
+and shipping directly to your supporting 
+participants.	</li>
+          <li>Real time activity notifications of all your 
+campaigns activity</li>
+          <li>Dedicated management team that will oversee every
+ steps of your campaign</li>
+        </ul>
+	   <div class="featureBoxRight"><img src="images/img4.png" width="62" height="62" alt="" /></div>
+	</div>
+	
+	</div>
+	<div class="cl"></div>
+	</div>
+	<div class="getstart"><a href="#"><img src="images/getstart.png" width="187" height="63" alt="" /></a></div>
+	
+	
+</div>
+
+
+
+</div>
+
+
+<div class="cl"></div>
+				</div>
+				<div class="cl"></div>
+</div>
+</div>

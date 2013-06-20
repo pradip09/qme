@@ -1,0 +1,520 @@
+<script language="JavaScript" src="{$tconfig.tcp_javascript}jwplayer.js"></script>
+
+{if  $eTypeSearch eq 'bizmember'}
+<div class="recent_activities_title">Releted Business</div>
+{if  $db_searchdata|@count gt 0}
+            {section name=i loop=$db_searchdata}
+<div class="blog_listing_centerpart">
+	<div class="bloglisting_reapt_box">
+		<div class="blog_list_img"><img src="{$db_searchdata[i].vProfileImage}" alt="" title="" width="100" height="100" /></div>
+		<div class="searchlisting_reapt_cont">
+			<div class="blog_list_title"><a href="{$site_url}/{$db_searchdata[i].vMemberUrl}" style="text-decoration:none;color:#3C3C3C;">{$db_searchdata[i].vName}</a></div>
+			{if $db_searchdata[i].country neq ''}<span>Country:</span>&nbsp; {$db_searchdata[i].country}<br />
+			{else}{/if}
+			{if $db_searchdata[i].state neq ''}<span>State:</span>&nbsp; {$db_searchdata[i].state}{else}{/if}
+			{if $db_searchdata[i].vCity neq ''}
+			<div class="blog_reapt_date"><span>City:</span>&nbsp; {$db_searchdata[i].vCity}</div>
+			{else}{/if} </div>
+	</div>
+</div>
+{/section}	
+            {else}
+<div style="text-align:center;color:red;">No Business found</div>
+{/if}
+            {/if}
+{if  $eTypeSearch eq 'campaign'}
+<div class="recent_activities_title">Releted Campaign</div>
+{if  $db_searchdata|@count gt 0}
+{section name=i loop=$db_searchdata}
+<div class="post_com_reapt_mainbg" style="height:353px;">
+	<div class="post_com_reapt_bg" style="min-height: 305px;">
+		<div class="post_video_bg"><div class="post_video_bg" id="displayboxdiv{$db_searchdata[i].iCampaignId}"> <img src="{$db_searchdata[i].vImage}" width="450" height="320" /> </div></div>
+		<div class="post_comp_dis" style="margin-left:465px;">
+			<!---<div class="post_camedit_delete"><a href="{$site_url}/myaddpostcampaign/{$db_searchdata[i].iCampaignId}">Edit</a>&nbsp;|&nbsp;<a href="#" onclick="deleteitem({$db_searchdata[i].iCampaignId},'postcampaign');" style="cursor:pointer;">Delete</a></div>--->
+			<div class="post_comp_dis_height">
+				<h4>{$db_searchdata[i].vCampaignName}</h4>
+				Description : <span class="Greentxt" style="font-size:13px;">{$db_searchdata[i].tContent}</span><br />
+				<a href="#read{$db_searchdata[i].iCampaignId}" class="desc">Read more..</a><br/>
+				<div style="display:none">
+					<div id="read{$db_searchdata[i].iCampaignId}" class="readpoppup">
+						<div>
+							<div class="popupheadding">{$db_searchdata[i].vCampaignName}</div>
+							<div class="popuptext">{$db_searchdata[i].tFullContent}</div>
+						</div>
+					</div>
+				</div>
+				Ad view/click : <span>{$db_searchdata[i].iPointsViewingAd} points</span><br />
+				Video/ Commercial view : <span>{$db_searchdata[i].iPointsCommercialAd} points</span><br />
+				Radio ads : <span>{$db_searchdata[i].iPointsListenAd} points</span><br />
+				Visit website : <span>{$db_searchdata[i].iPointsWeblinkAd} points</span><br />
+				Share campaign : <span>{$db_searchdata[i].iPointsWhenShare} points</span><br />
+				Buy this Product : <span>{$db_searchdata[i].iPontsWhenBuy} points</span><br />
+				<a href="#" class="camp_discount">A {$db_searchdata[i].iItemDiscount}% Discount</a> </div>
+			{if $iMemberId neq $db_searchdata[i].iMemberId}
+			{if $db_searchdata[i].iAccept eq 1}
+			<div class="accept_but"><input type="button" value="Accept" /></div>
+			{else}
+			<div class="accept_but"><a href="#" onclick="getAccept('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].iCampaignId}','{$db_searchdata[i].iPointsViewingAd}');"><input type="button" value="Accept" /></a></div>
+			{/if}
+			<div class="accept_but">
+			<a href="#" onclick="getDecline('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].iCampaignId}');"><input type="button" value="Decline" /></a>
+			</div>
+			<div class="accept_but">
+				<input type="button" value="Share" />
+			</div>
+			<div class="accept_but">
+				<input type="button" value="Donation" />
+			</div>
+			{else}
+			<div class="accept_but">
+				<input type="button" value="Accept" />
+			</div>
+			<div class="accept_but">
+				<input type="button" value="Decline" />
+			</div>
+			<div class="accept_but">
+				<input type="button" value="Share" />
+			</div>
+			<div class="accept_but">
+				<input type="button" value="Donation" />
+			</div>
+			{/if}
+			
+		</div>
+		<div class="cl"></div>
+</div>
+{if $iMemberId neq $db_searchdata[i].iMemberId}
+<div class="bottom_reapt_link">
+	{if $db_searchdata[i].vVideoFile neq ''}
+	{if $db_searchdata[i].iViewCommerical eq 1}
+	<a style="cursor:pointer;" onclick="showdataonmaindiv1('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vVideoFile}','{$db_searchdata[i].iCampaignId}','video','{$db_searchdata[i].iPointsCommercialAd}');">View Commercial</a>
+	{else}
+	<a style="cursor:pointer;" onclick="showdataonmaindiv('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vVideoFile}','{$db_searchdata[i].iCampaignId}','video','{$db_searchdata[i].iPointsCommercialAd}');">View Commercial</a>
+	{/if}{/if}
+	
+	<span>|</span>
+	{if $db_searchdata[i].vMp3File neq ''}
+	{if $db_searchdata[i].iRadioAdd eq 1}
+	<a style="cursor:pointer;" onclick="showdataonmaindiv1('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vMp3File}','{$db_searchdata[i].iCampaignId}','radio','{$db_searchdata[i].iPointsListenAd}');">View Radio Ad</a>
+	{else}
+	<a style="cursor:pointer;" onclick="showdataonmaindiv('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vMp3File}','{$db_searchdata[i].iCampaignId}','radio','{$db_searchdata[i].iPointsListenAd}');">View Radio Ad</a>
+	{/if}{/if}
+	<span>|</span>
+	{if $db_searchdata[i].vURL neq ''}
+	{if $db_searchdata[i].iViewWebsite neq 1}
+	<a href="#" onclick="getPoints('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vURL}','{$db_searchdata[i].iCampaignId}','Url','{$db_searchdata[i].iPointsWeblinkAd}');" >View Website</a>
+	{else}
+	<a href="#"  onclick="getUrl('{$db_searchdata[i].vURL}');" >View Website</a>	
+	{/if}{/if}
+	<span>|</span>
+	{if $db_searchdata[i].vBuyLinkURL neq ''}
+	<a href="{$db_searchdata[i].vBuyLinkURL}" target="_blank">Buy This Product</a>
+	{else}
+	<a href="#" >Buy This Product</a>
+	{/if}
+</div>
+{else}
+<div class="bottom_reapt_link">
+	{if $db_searchdata[i].vVideoFile neq ''}
+		<a style="cursor:pointer;" onclick="showdataonmaindiv1('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vVideoFile}','{$db_searchdata[i].iCampaignId}','video','{$db_searchdata[i].iPointsCommercialAd}');">View Commercial</a>
+	{/if}<span>|</span>
+	{if $db_searchdata[i].vMp3File neq ''}
+		<a style="cursor:pointer;" onclick="showdataonmaindiv1('{$db_searchdata[i].iAdminId}','{$db_searchdata[i].iMemberId}','{$db_searchdata[i].vMp3File}','{$db_searchdata[i].iCampaignId}','radio','{$db_searchdata[i].iPointsListenAd}');">View Radio Ad</a>	
+	{/if}<span>|</span>
+	{if $db_searchdata[i].vURL neq ''}
+		<a href="#"  onclick="getUrl('{$db_searchdata[i].vURL}');" >View Website</a>	
+	{/if}<span>|</span>
+	{if $db_searchdata[i].vBuyLinkURL neq ''}
+		<a href="#" >Buy This Product</a>
+	{/if}
+</div>
+{/if}
+</div>
+{literal}
+<script type="text/javascript">
+
+showdataonmaindiv('{/literal}{$db_searchdata[i].iAdminId}{literal}','{/literal}{$db_searchdata[i].iMemberId}{literal}','{/literal}{$db_searchdata[i].vImage}{literal}','{/literal}{$db_searchdata[i].iCampaignId}{literal}','image');
+function showdataonmaindiv(iAdmId, iMemId, file,iCampaignId,type,points){
+    
+    if(type =='image'){
+	    var html = '';
+	    if(iAdmId != 0)
+		html = '<img src="'+file+'" width="450px" height="300px">';
+	    else
+		html = '<img src="'+file+'"  width="450px" height="300px">';
+            $('#displayboxdiv'+iCampaignId).html(html);
+	    
+    }else if(type =='video'){
+	    
+	     if(iAdmId != 0) 
+	    {
+		var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}admin/'+iAdmId+'/'+file;
+		jwplayer('displayboxdiv'+iCampaignId).setup({
+		  'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		  'id': 'playerID',
+		  'autostart': 'true',
+		  'width': '440',
+		  'height': '305',
+		  'allowscriptaccess':'always',
+		  'file': url,
+		  'events': {											
+			      onComplete: function(event) {
+			      getPoints(iAdmId, iMemId,file,iCampaignId,type,points);
+			      }
+			      },
+		   
+		});
+	    }
+            else{
+		
+		var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}member/'+iMemId+'/'+file;
+		jwplayer('displayboxdiv'+iCampaignId).setup({
+		  'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		  'id': 'playerID',
+		  'autostart': 'true',
+		  'width': '440',
+		  'height': '305',
+		  'allowscriptaccess':'always',
+		  'file': url,
+		  'events': {											
+			      onComplete: function(event) {
+			      getPoints(iAdmId, iMemId,file,iCampaignId,type,points);
+			      }
+			      },
+		   
+		});
+	    }
+	    
+    }else if(type =='radio'){
+	if(iAdmId != 0)
+	{
+	        var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}admin/'+iAdmId+'/'+file;
+		  jwplayer('displayboxdiv'+iCampaignId).setup({
+		   'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		   'id': 'playerID',
+		   'autoplay':'true',
+		   'width': '300',
+		   'height': '24',
+		   'file': url,
+        	   'controlbar': 'top',
+		   'events': {											
+				    onComplete: function(event) {
+				    getPoints(iAdmId, iMemId,file,iCampaignId,type,points);
+				    }
+				    },
+		 });
+	}
+	else
+	{
+	     var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}member/'+iMemId+'/'+file;
+		  jwplayer('displayboxdiv'+iCampaignId).setup({
+		   'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		   'id': 'playerID',
+		   'autoplay':'true',
+		   'width': '300',
+		   'height': '24',
+		   'file': url,
+		   'controlbar': 'top',
+		   'events': {											
+				    onComplete: function(event) {
+				    getPoints(iAdmId, iMemId,file,iCampaignId,type,points);
+				    }
+				    },
+		 });
+	}
+    }
+    
+}
+
+
+$(document).ready(function(){
+$('.desc').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+
+</script>
+<script>
+function showdataonmaindiv1(iAdmId, iMemId, file,iCampaignId,type,points){
+    
+    if(type =='image'){
+	    var html = '';
+	    if(iAdmId != 0)
+		html = '<img src="'+file+'" width="450px" height="300px">';
+	    else
+		html = '<img src="'+file+'"  width="450px" height="300px">';
+            $('#displayboxdiv'+iCampaignId).html(html);
+	    
+    }else if(type =='video'){
+	    
+	     if(iAdmId != 0) 
+	    {
+		var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}admin/'+iAdmId+'/'+file;
+		jwplayer('displayboxdiv'+iCampaignId).setup({
+		  'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		  'id': 'playerID',
+		  'autostart': 'true',
+		  'width': '440',
+		  'height': '305',
+		  'allowscriptaccess':'always',
+		  'file': url
+		   
+		});
+	    }
+            else{
+		
+		var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}member/'+iMemId+'/'+file;
+		jwplayer('displayboxdiv'+iCampaignId).setup({
+		  'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		  'id': 'playerID',
+		  'autostart': 'true',
+		  'width': '440',
+		  'height': '305',
+		  'allowscriptaccess':'always',
+		  'file': url
+		   
+		});
+	    }
+	    
+    }else if(type =='radio'){
+	if(iAdmId != 0)
+	{
+	        var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}admin/'+iAdmId+'/'+file;
+		  jwplayer('displayboxdiv'+iCampaignId).setup({
+		   'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		   'id': 'playerID',
+		   'autoplay':'true',
+		   'width': '300',
+		   'height': '24',
+		   'controlbar': 'top',
+		   'file': url
+		 });
+	}
+	else
+	{
+	     var url = '{/literal}{$tconfig["tsite_upload_images_campaign"]}{literal}member/'+iMemId+'/'+file;
+		  jwplayer('displayboxdiv'+iCampaignId).setup({
+		   'flashplayer': '{/literal}{$tconfig["tsite_music"]}/player.swf{literal}',
+		   'id': 'playerID',
+		   'autoplay':'true',
+		   'width': '300',
+		   'height': '24',
+		   'file': url,
+		   'controlbar': 'top'
+		 });
+	}
+    }
+    
+}
+</script>
+<script>
+function getDecline(adminid,memid,campid){
+	
+	  var extra ='';
+	  extra+='&adminid='+adminid;
+	  extra+='&memid='+memid;
+	  extra+='&campid='+campid;
+	  var url = site_url+"/index.php?file=a-ajqmedecline";
+	  var pars = extra;
+	  //alert(url+pars);
+	  $.post(url+pars,
+          function(data) {
+		  if(data != ''){
+		    var html='';
+			html+='<div  class="signing" style="height:100px;">';
+			html+='<div  style="text-align:center;line-height:93px;color:#5E5E5E;" class="errormsg">Campaign Decline Successfully.</div>';
+			html+='<div>';
+			$(document).ready(function () {				
+				$.fancybox(html,{'modal':false,
+					         'margin' : '0',
+						 'padding' : '0',
+						 'scrolling' : 'no'
+				    });
+			setTimeout("parent.$.fancybox.close()", 3000);
+			var searchqme = $('#searchqme').val();
+			var extra = '';
+			extra+='&eTypeSearch=campaign';
+			extra+='&searchqme='+searchqme;
+			refresh(extra);
+			 //window.location='{/literal}{$site_url}{literal}'+'/myaccount/';
+			});
+			
+		  }});
+}
+function refresh(extra)
+{
+	var url = site_url+"/index.php?file=a-ajsearchdata";
+	var pars = extra;
+	$.post(url+pars,
+        function(data) {
+		
+		$('#searchmsg').html("").addClass('errormsg').fadeTo(900,1);
+		$('#displaysearchdata').html(data);
+		$('#displayactivity').hide();
+		$('#recentactivity').hide();
+		$('#displaysearchdata').show();
+		$('#searchdataqme').hide();
+	
+	});
+}
+function getAccept(adminid,memid,campid){
+	  var extra ='';
+	  extra+='&adminid='+adminid;
+	  extra+='&memid='+memid;
+	  extra+='&campid='+campid;
+	  var url = site_url+"/index.php?file=a-ajqmeaccept";
+	  var pars = extra;
+	  $.post(url+pars,
+          function(data) {
+		  if(data != ''){
+		        var html='';
+			html+='<div  class="signing" style="height:100px;">';
+			html+='<div  style="text-align:center;line-height:93px;color:#5E5E5E;" class="errormsg">Campaign Accept Successfully.</div>';
+			html+='<div>';
+			$(document).ready(function () {				
+				$.fancybox(html,{'modal':false,
+					         'margin' : '0',
+						 'padding' : '0',
+						 'scrolling' : 'no'
+				
+				    });
+				setTimeout("parent.$.fancybox.close()", 3000);
+				var searchqme = $('#searchqme').val();
+				var extra = '';
+				extra+='&eTypeSearch=campaign';
+				extra+='&searchqme='+searchqme;
+				refresh(extra);
+				//window.location='{/literal}{$site_url}{literal}'+'/myaccount/';
+			});
+			
+		  }});
+}
+function getUrl(file){
+	 window.open(file);
+}
+function getPoints(adminid,memid,file,campid,type,points){
+    
+	  var extra ='';
+	  extra+='&adminid='+adminid;
+	  extra+='&memid='+memid;
+	  extra+='&campid='+campid;
+	  extra+='&points='+points;
+	  extra+='&type='+type;
+	  var url = site_url+"/index.php?file=a-ajqmecamppnts";
+	  var pars = extra;
+	  //alert(url+pars);
+	  $.post(url+pars,
+          function(data) {
+	  id = data.split('/');
+		var Idd = id[0];
+		var Id = id[1];
+	        if(Idd=='video'){
+		        var html='';
+			html+='<div  class="signing" style="height:100px;">';
+			html+='<div  style="text-align:center;line-height:93px;color:#5E5E5E;" class="errormsg">One Member is going to view video gallary.</div>';
+			html+='<div>';
+			$(document).ready(function () {				
+				$.fancybox(html,{'modal':false,
+					         'margin' : '0',
+						 'padding' : '0',
+						 'scrolling' : 'no',
+						 'onComplete': function() { 
+					       $("#fancybox-wrap, #fancybox-overlay").delay(3000).fadeOut();
+					       var searchqme = $('#searchqme').val();
+						var extra = '';
+						extra+='&eTypeSearch=campaign';
+						extra+='&searchqme='+searchqme;
+						refresh(extra);
+					         }
+					       });
+					
+			});
+		  
+			 
+		  }if(Idd=='radio'){
+		        var html='';
+			html+='<div  class="signing" style="height:100px;">';
+			html+='<div  style="text-align:center;line-height:93px;color:#5E5E5E;" class="errormsg">One Member is going to listen radio gallary.</div>';
+			html+='<div>';
+			
+			$(document).ready(function () {				
+				$.fancybox(html,{'modal':false,
+					         'margin' : '0',
+						 'padding' : '0',
+						 'scrolling' : 'no'
+						 });
+					     setTimeout("parent.$.fancybox.close()", 3000);
+					    var searchqme = $('#searchqme').val();
+					var extra = '';
+					extra+='&eTypeSearch=campaign';
+					extra+='&searchqme='+searchqme;
+					refresh(extra);
+					     });
+			    
+		  }if(Idd=='Url'){
+			
+		        var html='';
+			html+='<div  class="signing" style="height:100px;">';
+			html+='<div  style="text-align:center;line-height:93px;color:#5E5E5E;" class="errormsg">One Member is going to visit member website.</div>';
+			html+='<div>';
+			
+			$(document).ready(function () {				
+				$.fancybox(html,{'modal':false,
+					         'margin' : '0',
+						 'padding' : '0',
+						 'scrolling' : 'no'
+					     });
+					});
+			    setTimeout("parent.$.fancybox.close()", 3000);
+			    window.location.href=file;
+			    var searchqme = $('#searchqme').val();
+				var extra = '';
+				extra+='&eTypeSearch=campaign';
+				extra+='&searchqme='+searchqme;
+				refresh(extra);
+			    
+		  }
+		  
+		  });
+	 
+}
+
+
+</script>
+{/literal}
+    
+    {/section}
+    {else}
+<div style="text-align:center;color:red;">No Campaign found</div>
+{/if}
+    
+
+{/if}
+{if  $eTypeSearch eq 'member'}
+<div class="recent_activities_title">Releted Member</div>
+{if  $db_searchdata|@count gt 0}
+    {section name=i loop=$db_searchdata}
+<div class="blog_listing_centerpart">
+	<div class="bloglisting_reapt_box">
+		<div class="blog_list_img"><a href="{$site_url}/{$db_searchdata[i].vMemberUrl}"><img src="{$db_searchdata[i].vProfileImage}" alt="" title="" width="100" height="100" /></a></div>
+		<div class="searchlisting_reapt_cont">
+			<div class="blog_list_title"><a href="{$site_url}/{$db_searchdata[i].vMemberUrl}" class="ret_tit">{$db_searchdata[i].vName}</a></div>
+			{if $db_searchdata[i].country neq ''}<span>Country:</span>&nbsp; {$db_searchdata[i].country}<br />
+			{else}{/if}
+			{if $db_searchdata[i].state neq ''}<span>State:</span>&nbsp; {$db_searchdata[i].state}{else}{/if}
+			{if $db_searchdata[i].vCity neq ''}
+			<div class="blog_reapt_date"><span>City:</span>&nbsp; {$db_searchdata[i].vCity}</div>
+			{else}{/if} </div>
+	</div>
+</div>
+{/section}
+    {else}
+<div style="text-align:center;color:red;">No Member found</div>
+{/if}
+{/if} 

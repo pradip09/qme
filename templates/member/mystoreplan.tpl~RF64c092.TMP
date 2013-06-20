@@ -1,0 +1,92 @@
+<div id="services_box" class="desboard_body" style="padding-bottom:0px;">
+	<div class="desboard-left">
+		<div class="user_name_myaccount">
+			<div class="user_photo"><a href="#"> {if $vProfileImage eq ''} <img src="{$tconfig["front_images"]}user_img.png" alt="" /> {else} <img src="{$tconfig["tsite_upload_images_member"]}/{$mem_info[0].iMemberId}/2_{$mem_info[0].vProfileImage}" alt="" /> {/if} </a></div>
+			{$Name} </div>
+		<div class="cl"></div>
+		{include file="member/myaccountleft.tpl"} </div>
+	<!--right part start here -->
+	<div class="desboard-right paddingleftright" style="width:710px">
+		<!--heaing start -->
+		<div class="MyVedioTitle ProfileVedioTitle">
+			<h1>My Store</h1>
+		</div>
+		<div class="cl"></div>
+		<!--heaing end -->
+		<div class="graybox graybox_select_plan">
+			<!--menu tab start here -->
+			<div class="tabber">
+				<!--personal infomation start here -->
+				<div class="tabbertab_pan">
+					<div class="plan_top_title">
+						<ul>
+							<li>General Items</li>
+							<li>Clothing and Accessaries</li>
+							<li>Automotive</li>
+							<li class="last">Real Estate</li>
+						</ul>
+					</div>
+					<div class="per_info_container">
+						<div class="per_info_top_text"> <strong>Welcome</strong> to MYQME store section. MYQME offers you one of a kind  store tools where you have the versatility to create product entries for multiple industries. </div>
+						<div class="choose_plan_title">Begin by Choosing a plan</div>
+						<div class="choose_plan_bg">
+							<div class="choose_plan_border_bg">
+								<div class="plan_reapt_box">
+									<div class="free_plan_title">Free Starter </div>
+									<div class="plan_price"></div>
+									<div class="plan_text">
+										<ul>
+											<li>Lorem Ipsum is simply dummy </li>
+										</ul>
+									</div>
+									<div class="upgrade_btn"><a href="{$site_url}/mystore"><img src="{$tconfig["front_images"]}img_create.png" alt="Upgrade" title="Upgrade" /></a></div>
+									<div class="plan_checkbox">
+										<input type="checkbox" />
+									</div>
+								</div>
+								<div class="plan_reapt_box">
+									<div class="bronze_plan_title">Bronze level Store</div>
+									<div class="plan_price">$5.00 per Month</div>
+									<div class="plan_text">
+										<ul>
+											<li>Lorem Ipsum is simply dummy </li>
+										</ul>
+									</div>
+									<div class="upgrade_btn"><a href="#"><img src="{$tconfig["front_images"]}upgrade-btn.png" alt="Upgrade" title="Upgrade" /></a></div>
+									
+								</div>
+								<div class="plan_reapt_box">
+									<div class="bronze_plan_title">Bronze level Store</div>
+									<div class="plan_price">$10.00 per Month</div>
+									<div class="plan_text">
+										<ul>
+											<li>Lorem Ipsum is simply dummy </li>
+										</ul>
+									</div>
+									<div class="upgrade_btn"><a href="#"><img src="{$tconfig["front_images"]}upgrade-btn.png" alt="Upgrade" title="Upgrade" /></a></div>
+							
+								</div>
+								<div class="gold_reapt_box">
+									<div class="gold_plan_title">Gold level Store</div>
+									<div class="plan_price">$50.00 per Month</div>
+									<div class="plan_text">
+										<ul>
+											<li>Lorem Ipsum is simply dummy </li>
+										</ul>
+									</div>
+									<div class="upgrade_btn"><a href="#"><img src="{$tconfig["front_images"]}gold_upgrade.png" alt="Upgrade" title="Upgrade" /></a></div>
+							
+								</div>
+								<div class="cl"></div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--menu tab start end -->
+		</div>
+	</div>
+	<!--right part start end-->
+	<div class="cl"></div>
+</div>

@@ -1,0 +1,227 @@
+<!--<script language="JavaScript" src="jvalidator.js"></script>-->
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ckeditor_old/ckeditor.js"></script>
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ajax/jquery.form.js"></script>
+<style>
+	#fancybox-title-float-wrap td{ display:none; }
+</style>
+<form name="frmadd" id="frmadd" method="post" action="index.php?file=a-ajsendmessage&view=action">
+<input type="Hidden" name="view" id="view" value="action">
+<input type="Hidden" name="UserId" id="UserId" value="{$iUserId}">
+<!--<input type="Hidden" name="iMToId" id="iMToId" value="{$iMemId}">-->
+<div class="desboard_body"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<td width="22%" valign="top" class="mail_left">
+		<table width="100%" border="0" style="margin-top:10px;"  align="right" cellpadding="0" cellspacing="0">
+		<tr>
+			<td height="25" class="inbox-round-bg" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0" style="margin-bottom: 7px;"/> <a href="{$site_url}/myaccount" class="whitelink-normal"><img src="{$tconfig["front_images"]}my-account.png" alt="My Store" title="My Store" border="0"/></a></td>
+		</tr>
+		<tr>
+			<td height="25" class="inbox-round-bg active" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/composemessage" class="whitelink-normal">Compose Message</a></td>
+		</tr>
+		<tr>
+			<td height="25" class="inbox-round-bg"  style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/myinbox" class="whitelink-normal">Inbox</a></td>
+		</tr>
+		<tr>
+			<td height="25" class="inbox-round-bg" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/sentmail" class="whitelink-normal">Sent Mails</a></td>
+		</tr>
+		</table>
+	</td>
+	<td width="1%"></td>
+	<td width="78%" valign="top">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td valign="top"  class="gr-bg">
+			 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <!--<tr>
+                	<td width="3"><img src="{$tconfig["front_images"]}gr-topleftcorner.gif" alt="" border="0" /></td>
+                    <td class="gr-bg" width="100%"><img src="{$tconfig["front_images"]}spacer.gif" height="1" width="1" /></td>
+                    <td width="3"><img src="{$tconfig["front_images"]}gr-toprightcorner.gif" alt="" border="0" /></td>
+                 </tr>-->
+                <tr>
+                	<td colspan="3" valign="top" class="compose_right">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<div id="regmsgid123"></div>
+							<tr>
+								<td height="5"></td>
+							</tr>
+						<tr>
+							<td width="3%" valign="top"></td>
+							<td width="10%" valign="top"><font class="reqmsg"><span style="color:red;">*</span> To</font></td>
+							<td width="1%" valign="top">:</td>
+							<td width="86%"><textarea tabindex="1" style="width:570px" rows="3"  class="input1" name="vTo" id="vTo" validationmsg="Enter To" onkeypress="return choosecontact(event);">{$uname[0].vEmail}</textarea></td>
+						</tr>
+						<tr>
+							<td height="31" valign="top"></td>
+							<td height="31" valign="top"></td>
+							<td height="31" valign="top"></td>
+							<td height="31" valign="top"><a href="#Contact" class="choose_contacts" style="float:left;" title="Choose Contacts" id="contact"><img src="{$tconfig["front_images"]}btn_choose.png" alt="" border="0" /></a></div></td>
+							
+						</tr>
+						<tr valign="top">
+							<td height="40"></td>						
+							<td height="40"><font class="reqmsg"><span style="color:red;">*</span> Subject</font></td>
+							<td height="40">:</td>
+							<td height="40"><input type="Text" tabindex="3" class="input1" value="{$subject}" name="vSubject" id="vSubject" validationmsg="Enter Subject" style="width:570px; height:29px;"></td>
+						</tr>
+						<tr>
+							<td valign="top"></td>
+							<td valign="top"><font class="reqmsg"><span style="color:red;">*</span> Body</font></td>
+							<td valign="top">:</td>
+							<td><textarea rows="20" tabindex="4" style="width:570px" class="input2" name="tBody" id="tBody" validationmsg="Enter Message">{$arr[0].lBody}</textarea></td>
+						</tr>
+						<tr>
+								<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top"></td>
+							<td valign="top"></td>
+							<td valign="top"></td>
+							<td valign="top">
+							<img style="cursor:pointer" id="btnSend" name="btnSend" onclick="mail_send();" src="{$tconfig["front_images"]}send.png" tabindex="5">
+							<img style="cursor:pointer" src="{$tconfig["front_images"]}mail_reset_btn.png" onclick="reset();" tabindex="6">
+							<img style="cursor:pointer" src="{$tconfig["front_images"]}mail_cancel_btn.png" onclick="return RedirectURL('{$site_url}/myinbox');" tabindex="7">
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+                	<td width="3"><img src="{$tconfig["front_images"]}gr-bottleftcorner.gif" alt="" border="0" /></td>
+                    <td class="gr-bg"><img src="{$tconfig["front_images"]}spacer.gif" height="1" width="1" /></td>
+                    <td width="3"><img src="{$tconfig["front_images"]}gr-bottrightcorner.gif" alt="" border="0" /></td>
+                </tr>
+                </table>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table></div>
+</form>
+<div style="display:none;">
+	
+	<div id="Contact"class="send_mail_member">
+		<div id="contactmsg" style="text-align:center;line-height:24px; color:red; font-size:18px;"></div>
+		<div class="poppupheading">Choose Contacts</div>
+		<!--<input name="vEmailForget" id="vEmailForget" class="singinput" type="text" placeholder="User name" />-->
+		<div class="contact_member_list">
+		<form id="frmcontact" name="frmcontact" enctype="multipart/form-data" method="post" action="{$site_url}/index.php?file=a-ajinboxcontactemail">	
+		<table>
+			<tr>
+				<td width="10%"><input type="checkbox" onChange="toggleAll(this)"/></td>
+				<td width="28%"><label class="contactpopupheading">Member Name</label></td>
+				<td width="25%"><label class="contactpopupheading">Email Addres</label></td>
+			</tr>
+		</table>
+		<div class="scroll">
+		 <table>
+			{if  $all_member|@count gt 0}
+			{section name=i loop=$all_member}
+			<tr>
+				<td width="10%"><input name="contact[]" type="checkbox" id="contact{$all_member[i].iMemberId}" value="{$all_member[i].vEmail}"/></td>
+				<td width="28%"> <label>{$all_member[i].vName}</label></td>
+				<td width="40%"> <label>{$all_member[i].vEmail}</label></td>
+			</tr>
+			{/section}
+			{/if}
+		</table>
+		 </div>
+		</form>
+		</div>
+		<div class="contactbtn"><a href="#" onclick="checkmail();"><img src="{$tconfig["front_images"]}submit.png"/></a></div>
+	</div>
+	{literal}
+	<script type="text/javascript">
+	function reset(){
+		$('#vTo').val('');
+		$('#vSubject').val('');
+		$('#tBody').val('');
+		return true;
+	}
+	function toggleAll(element) 
+	{
+	var form = document.forms.frmcontact, z = 0;
+	for(z=0; z<form.length;z++)
+		{
+		if(form[z].type == 'checkbox')
+			form[z].checked = element.checked;
+	   	}
+	}
+	function checkmail(){
+			var allData = $('#frmcontact').serialize();
+			$("#frmcontact").ajaxForm({
+				target: '#contactmsg',
+				success: function(data){
+					//alert(data);
+					$('#contactmsg').html('');
+					$('#vTo').val(data);
+					$.fancybox.close();
+				}
+			}).submit();
+		}
+	</script>
+	{/literal}
+</div>
+{literal}
+<script type="text/javascript">
+
+CKEDITOR.config.width = 580;
+CKEDITOR.replace( 'tBody',
+		 
+	{
+		
+		toolbar :
+		[
+			//{ name: 'document', items : ['Save','NewPage','Print',] },
+			{ name: 'styles', items : [ 'Styles','Format' ] },
+			//{ name: 'styles', items : ['Format' ] },
+			{ name: 'basicstyles', items : [ 'Bold','Italic',] },
+			{ name: 'paragraph', items : [ 'NumberedList'] },
+		]
+	}
+	
+	);
+
+$(document).ready(function(){
+$('#contact').fancybox({
+	'overlayShow'	: true,
+	'transitionIn'	: 'elastic',
+	'transitionOut'	: 'elastic',
+	'margin' : '0',
+	'padding' : '0',
+	'scrolling' : 'no'
+	
+});
+});
+function choosecontact(events){
+	var unicodes=events.charCode? events.charCode :events.keyCode;
+	if(unicodes)
+	{  
+			alert("Please choose contacts on clicking choose contacts.")
+			return false; 
+	}
+
+}
+function mail_send()
+{
+	var body = CKEDITOR.instances['tBody'].getData();
+	
+	if($('#vTo').val() ==''){
+			$('#regmsgid123').html("Please specify at least one recipient.").addClass('recipient').fadeTo(900,1);
+			return false;
+	}
+	if($('#vSubject').val() ==''){
+			$('#regmsgid123').html("Please specify subject of mail.").addClass('recipient').fadeTo(900,1);
+			//var r = confirm('Send this message without a subject or text in the body?');
+			/*if(r == 'false')
+			{
+			return false;	
+			}*/
+			return false;	
+	}
+	document.frmadd.submit();
+	
+}
+
+</script>
+{/literal}

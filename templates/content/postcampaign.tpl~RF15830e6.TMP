@@ -1,0 +1,635 @@
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+<script language="JavaScript" src="{$tconfig["front_javascript"]}ajax/jquery.form.js"></script>
+<script language="JavaScript" src="http://jqueryui.com/ui/jquery.ui.datepicker.js"></script>
+<script language="JavaScript" src="http://jqueryui.com/ui/jquery.ui.widget.js"></script>
+<script language="JavaScript" src="http://jqueryui.com/ui/jquery.ui.core.js"></script>
+<script language="JavaScript" src="http://jqueryui.com/jquery-1.7.2.js"></script>
+
+<div id="services_box" class="desboard_body">
+<div class="BroCampContentPart">
+<div class="BroCampContentPartBg">
+	<div class="BroCampLeftPart">
+		<div class="BroCampLeftLink"><a href="{$site_url}/browsejob">Browse Job</a></div>
+		<div class="BroCampLeftLink"><a href="{$site_url}/postjob">Post a Job</a></div>
+		<div class="BroCampLeftLink"><a href="{$site_url}/postcampaign">Post Campaign</a></div>
+		<div class="BroCampLeftLink"><a href="{$site_url}/browsecampaign">Browse Campaign</a></div>
+	</div>
+	<div class="BroCampCenterPartBg">
+		<div class="BroCampTitleBg">
+			<h3>Post Campaign</h3>
+		</div>
+		{if $iUserId neq ''}
+		<div class="PostCampaignCenterPart">
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Create a Campaign</div>
+			</div>
+			<div id="postCampaignMsg" style="text-align:center;line-height:24px; color:red; font-size:18px;"></div>
+			
+			
+			<form id="frmPostCampaign" name="frmPostCampaign" method="post" enctype="multipart/form-data" action="{$site_url}/index.php?file=a-ajpostcampaign">			
+					<input type="hidden" name="mode" id="mode" value="add" />		
+			<table cellspacing="7" cellpadding="0">		
+				
+				<tr>
+					<td class="postcom_label">Ad Name :</td>
+					<td class="postcom_input">
+						<div class="input_side_text"><input type="text" id="vCampaignName" name="vCampaignName" value=""/></div>
+						
+						
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[1].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Ad Content :</td>
+					<td>
+						<textarea id="tContent" name="tContent" rows="7" cols="60"></textarea>
+						<!--<textarea id="wysiwyg" name="textfield" rows="10" cols="75"></textarea>-->
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Ad Image :</td>
+					<td class="postcom_input_image">
+					<input type="file" id="vImage" name="vImage" value="" onchange="CheckValidFile(this.value,this.id)"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Campaign Interest :</td>
+					<td class="postcom_input">
+					<div class="SelectTextBoxCamPaign">
+						{if $db_interest|@count gt 0}
+						<select name="iInterestId" id="iInterestId">
+							<option value="">Please Select</option>
+							{section name=i loop=$db_interest}
+							<option value="{$db_interest[i].iInterestId}">{$db_interest[i].vInterest}</option>
+							{/section}
+						</select>
+						{/if}
+					</div>
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[2].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Industry :</td>
+					<td class="postcom_input"><div class="SelectTextBoxCamPaign">
+							<select name="vIndustry" id="vIndustry">
+								<option value="">Please Select</option>
+								{section name=i loop=$db_industry}
+								<option value="{$db_industry[i].iIndustry}">{$db_industry[i].iIndustry}</option>
+								{/section}
+							</select>
+						</div>
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[3].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Product Name :</td>
+					<td class="postcom_input">
+						<input type="text" id="vProductName" name="vProductName" value=""/>
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Is this a Fundraiser?</td>
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eIsFundraiser" name="eIsFundraiser" /> Yes
+						<!--<input type="checkbox" />No -->
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td class="postcom_label">Choose a zip code :</td>
+					<td class="postcom_input"><input type="text" id="vZipCode" name="vZipCode" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Choose mile radius<br />
+						from your location :</td>
+					<td class="postcom_input"><input type="text" id="vMileRadius" name="vMileRadius" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Is this a national campaign?</td>
+						
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eIsNational" name="eIsNational" /> Yes
+						<!--<input type="checkbox" />No-->
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Is this a local campaign?</td>
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eIsLocal" name="eIsLocal" /> Yes
+						<!--<input type="checkbox" />No -->
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Ad Start Date :</td>
+					<td class="postcom_input">
+						<div class="input_side_text"><input type="text" id="dStartDate" name="dStartDate" value=""/></div>
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[4].vToolTipText}
+									</span>
+							</a>
+						</div>
+						<img src="{$tconfig["front_images"]}date-icon.png" class="Vmiddle" alt="" title="" /></td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Ad Finish Date :</td>
+					<td class="postcom_input">
+						<div class="input_side_text"><input type="text" id="dFinishDate" name="dFinishDate" value=""/></div>
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[5].vToolTipText}
+									</span>
+							</a>
+						</div>
+						<img src="{$tconfig["front_images"]}date-icon.png" class="Vmiddle" alt="" title="" /></td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Points for viewing ad :</td>
+					<td class="postcom_input">
+						<div class="input_side_text"><input type="text" id="iPointsViewingAd" name="iPointsViewingAd" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[6].vToolTipText}
+									</span>
+							</a>
+						</div>	
+					</td>
+				</tr>
+			</table>
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Radio Ad</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Upload Mp3 File :</td>
+					<td class="postcom_input_image">
+						<input type="file" id="vMp3File" name="vMp3File" value="" onchange="CheckValidAudioFile(this.value,this.id)"/>
+
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Points to Listen To <br />
+						radio ad :</td>
+					<td class="postcom_input">
+						<div class="input_side_text"><input type="text" id="iPointsListenAd" name="iPointsListenAd" value=""  onkeypress="return checkprice(event);"/></div>
+						<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[7].vToolTipText}
+									</span>
+							</a>
+						</div>
+						</td>
+				</tr>
+			</table>
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Commercial Ad</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Upload Video File :</td>
+					<td class="postcom_input_image">
+						<input type="file" id="vVideoFile" name="vVideoFile" value="" onchange="CheckValidVideoFile(this.value,this.id)"/>
+					<!--	<input type="text" class="input_image_txt" />
+						<input type="button" value="Browse" />-->
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Points to view <br />
+						Commercial ad :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iPointsCommercialAd" name="iPointsCommercialAd" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[8].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">WebLink Option</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Ad URL :</td>
+					<td class="postcom_input">
+					<input type="text" id="vURL" name="vURL" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Points to visit <br />
+						This memeber site :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iPointsWeblinkAd" name="iPointsWeblinkAd" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[9].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">BuyLink Option</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Buy Link URL :</td>
+					<td class="postcom_input">
+					<input type="text" id="vBuyLinkURL" name="vBuyLinkURL" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Item Cost :</td>
+					<td class="postcom_input">
+					<input type="text" id="iItemCost" name="iItemCost" value="" onkeypress="return checkprice(event);"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Discount :</td>
+					<td class="postcom_input">
+					<input type="text" id="iItemDiscount" name="iItemDiscount" value="" onkeypress="return checkprice(event);"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Discount translate into points when <br/>members buy :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iPontsWhenBuy" name="iPontsWhenBuy" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[10].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				
+			</table>
+
+				<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Share Option</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Point when memebers share to their extended network</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iPointsWhenShare" name="iPointsWhenShare" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[11].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+		
+			</table>
+
+
+
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Who Match this campaign</div>
+			</div>
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Number of members who match this campaign in my community:</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iNumMatchInCommunity" name="iNumMatchInCommunity" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[12].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Share with this group?</td>
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eSendEachMyCommunity" name="eSendEachMyCommunity" /> Yes
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Number of members 
+						who match this 
+						campaign outside
+						of my community:</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iNumMatchOutCommunity" name="iNumMatchOutCommunity" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[14].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Share with this group?</td>
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eSendEachOutCommunity" name="eSendEachOutCommunity" /> Yes
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Number of members 
+						who support biz in 
+						my community :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iNumSupportBiz" name="iNumSupportBiz" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[13].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Share with this group?</td>
+					<td class="postcom_checkboxbtn">
+						<input type="checkbox" id="eSendEachSupportBiz" name="eSendEachSupportBiz" /> Yes
+					</td>
+				</tr>
+				<tr><td></td><td></td></tr>
+				<tr>
+					<td class="postcom_label">Total Estimated Reach:</td>
+					<td class="postcom_checkboxbtn">
+						100333
+					</td>
+				</tr>
+			</table>
+			<div class="PostCampaignTitle">
+				<div class="PostCampaignTitleBg">Member of View/click</div>
+			</div>
+			
+			<table cellspacing="7" cellpadding="0">
+				<tr>
+					<td class="postcom_label">Max Ad Views :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iMaxAdViews" name="iMaxAdViews" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[16].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="postcom_label">Max Ad Clicks :</td>
+					<td class="postcom_input">
+					<div class="input_side_text"><input type="text" id="iMaxAdClicks" name="iMaxAdClicks" value="" onkeypress="return checkprice(event);"/></div>
+					<div class="question_mark_btn">
+							<a class="tooltip" href="javascript:void(0);">
+								<img src="{$tconfig["front_images"]}question-mark.png" class="questionmark_icon" alt="" title="" />
+									<span class="custom help">
+										<img src="{$tconfig["front_images"]}Help.png" class="help_img" height="48" width="48" />
+											{$db_tooltips[17].vToolTipText}
+									</span>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			 </form><div class="postcom_input_btn"><input onclick="return validatePostCampaignForm();" type="btn"  class="btnbg"/>
+						<a href="{$site_url}/qmeoops"><img src="{$tconfig["front_images"]}cancle-btn.png" alt="cancel"/></a>
+					
+			</div>
+			<div id='previewData'></div>
+		</div>
+		{else}
+		<div class="PostCampaignCenterPart">
+<div class="BroCampToptxt" style="text-align:center;color:red;">Please Login first and then post a job.</div>
+</div>
+		{/if}
+		<div><img src="{$tconfig["front_images"]}brocampbotcurve.png" alt="" title="" border="0" /></div>
+	</div>
+</div>
+</div>
+<div class="cl"></div>
+</div>
+
+
+{literal}
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function() {
+$('#vInterest').selectbox({debug: true});
+$('#box11').selectbox({debug: true});
+});
+
+
+
+function validatePostCampaignForm(){
+
+	if($('#vCampaignName').val() ==''){
+		$('#postCampaignMsg').html("Please enter Campaign Name").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#vZipCode').val() ==''){
+		$('#postCampaignMsg').html("Please enter Zip code").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#vMileRadius').val() ==''){
+		$('#postCampaignMsg').html("Please enter Mile Radius").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	/*else if($('#dStartDate').val() ==''){
+		$('#postCampaignMsg').html("Please enter Campaign Start Date").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#dFinishDate').val() ==''){
+		$('#postCampaignMsg').html("Please enter Campaign Finish Date").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}*/
+	else if($('#iPointsViewingAd').val() ==''){
+		$('#postCampaignMsg').html("Please enter Poing for viewing ad").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iPointsListenAd').val() ==''){
+		$('#postCampaignMsg').html("Please enter Poing for listening radio ad").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iPointsCommercialAd').val() ==''){
+		$('#postCampaignMsg').html("Please enter viewing commercial ad").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#vURL').val() ==''){
+		$('#postCampaignMsg').html("Please enter WebLink URL").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iPointsWeblinkAd').val() ==''){
+		$('#postCampaignMsg').html("Please enter points for WebLink Ad").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#vBuyLinkURL').val() ==''){
+		$('#postCampaignMsg').html("Please enter BuyLink URl").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iPontsWhenBuy').val() ==''){
+		$('#postCampaignMsg').html("Please enter points when member buy").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iPointsWhenShare').val() ==''){
+		$('#postCampaignMsg').html("Please enter Point when memebers share to their extended network").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iNumMatchInCommunity').val() ==''){
+		$('#postCampaignMsg').html("Please enter Number of members who match this campaign in my community").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iNumMatchOutCommunity').val() ==''){
+		$('#postCampaignMsg').html("Please enter Number of members who match this campaign outside of my community").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iNumSupportBiz').val() ==''){
+		$('#postCampaignMsg').html("Please enter Number of members who support biz in my community").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iMaxAdViews').val() ==''){
+		$('#postCampaignMsg').html("Please enter Max Ad Views").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}
+	else if($('#iMaxAdClicks').val() ==''){
+		$('#postCampaignMsg').html("Please enter Max Ad Clicks").addClass('errormsg').fadeTo(900,1);
+		document.body.scrollTop = 100;
+		return false;
+	}	
+	else
+	{
+		$('#postCampaignMsg').html("Processing your request....").addClass('errormsg').fadeTo(900,1);
+		$("#frmPostCampaign").ajaxForm({
+			target: '#postCampaignMsg'
+			}).submit();
+		document.body.scrollTop = 100;
+	}
+}
+
+function CheckValidFile(val,name)
+{	
+	var a = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
+	if(a == 'gif' || a == 'GIF' || a == 'jpg'  ||a == 'JPG' ||a == 'jpeg' ||a == 'JPEG' ||a == 'png'  )
+	return true;
+	//alert('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Image (gif,jpg,jpeg)  Files!!!');
+	document.getElementById(name).value = "";
+	$('#postCampaignMsg').html('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Image (gif,jpg,jpeg)  Files!!!').addClass('errormsg').fadeTo(900,1);
+	document.body.scrollTop = 100;
+	return false; 
+}
+
+function CheckValidAudioFile(val,name)
+{
+	var a = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
+	if(a == 'mp3' || a == 'MP3' )
+	return true;
+	//alert('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Audio (mp3)  Files!!!');
+	document.getElementById(name).value = "";
+	$('#postCampaignMsg').html('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Audio (mp3)  Files!!!').addClass('errormsg').fadeTo(900,1);
+	document.body.scrollTop = 100;
+	return false; 
+}
+
+function CheckValidVideoFile(val,name)
+{
+	var a = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
+	if(a == 'mp4' || a == 'MP4' || a== 'avi' || a == 'AVI' || a == 'flv' || a == 'FLV')
+	return true;
+	//alert('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Video (mp4, flv, avi)  Files!!!');
+	document.getElementById(name).value = "";
+	$('#postCampaignMsg').html('The extension ' + a.toUpperCase() + ' is not valid. Please Upload only Video (mp4, flv, avi)  Files!!!').addClass('errormsg').fadeTo(900,1);
+	document.body.scrollTop = 100;
+	return false; 
+}
+</script>
+
+ <script type="text/javascript">
+ $(document).ready(function() {
+ $(function() {$('#dStartDate').datepicker({dateFormat: 'yy-mm-dd'});});
+ });
+ </script>
+
+{/literal}

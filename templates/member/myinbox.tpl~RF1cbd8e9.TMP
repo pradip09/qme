@@ -1,0 +1,240 @@
+
+<script type="text/javascript">
+    var readarr = new Array();
+</script>
+
+<form name="frmlist" id="frmlist" method="post" action="{$site_url}/index.php?file=a-ajmyinbox_a">
+<!--<?echo $generalobj->PrintElement("view","view","","Hidden");?>
+<?echo $generalobj->PrintElement("chkCount","chkCount",'',"Hidden");?>-->
+<input name="chkCount" id="chkCount" type="hidden"/>
+<input name="view" id="view" type="hidden"/>
+<div class="desboard_body"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+{if $msg1 neq ''}
+<tr id="msgrow" class="displaynone">
+	<td colspan="2">
+	
+	<div id="msg">
+		<ul id="top-tabstrips">
+			<li><em>{$msg1}</em></li>
+		</ul>
+	</div>
+	</td>
+	
+</tr>
+{/if}
+
+	<td width="22%" valign="top" class="mail_left">		<table width="100%" border="0" style="margin-top:10px;"  align="right" cellpadding="0" cellspacing="0">
+			<tr>
+			<td height="25" class="inbox-round-bg" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/myaccount" class="whitelink-normal">My Account</a></td>
+		</tr>
+			<tr>
+				<td height="25" class="inbox-round-bg" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/composemessage" class="whitelink-normal">Compose Message</a></td>
+				</tr>
+			<tr>
+				<td height="25" class="inbox-round-bg active"  style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/myinbox" class="whitelink-normal">Inbox</a></td>
+				</tr>
+			<tr>
+				<td height="25" class="inbox-round-bg" style="padding-left:18px;"><img src="{$tconfig["front_images"]}inbox-icon1.gif" alt="" border="0"/> <a href="{$site_url}/sentmail" class="whitelink-normal">Sent Mails</a></td>
+				</tr>
+		</table></td>
+		<td width="1%"></td>
+		<td width="78%" valign="top" class="compose_right">			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td valign="top">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="3"><img src="{$tconfig["front_images"]}gr-topleftcorner.gif" alt="" border="0" /></td>
+                    		<td class="gr-bg" width="100%"><img src="{$tconfig["front_images"]}spacer.gif" height="1" width="1" /></td>
+                    		<td width="3"><img src="{$tconfig["front_images"]}gr-toprightcorner.gif" alt="" border="0" /></td>
+						</tr>
+							<tr>
+								<td colspan="3"  valign="top" class="send">
+									<table width="100%" border="0" cellspacing="4" cellpadding="2">
+										<tr>
+											<td height="25" colspan="2"><input type="Text" class="input1" id="vSearch" name="vSearch" value="{$vSearch}"> <input type="button" class="btn_searchmail"  style="cursor:pointer" title="Search Mail"  onclick="getRedirect();" value="Search Mail">&nbsp;<a style="CURSOR:POINTER;"title="Delete" onclick="doaction('Delete');"><img src="{$tconfig["front_images"]}mail_delete_btn.png" alt="Delete" border="0" hspace="2" align="absmiddle" /></a>&nbsp;<a href="index.php?file=ge-inbox&view=edit&AX=Yes" style="cursor:pointer; "  title="Show all" ><img src="{$tconfig["front_images"]}mail_show_all_btn.png" alt="Show all" border="0" hspace="2" align="absmiddle" /></a>												</td>
+								</tr>
+										{if $num_totrec gt 0}
+										<tr>
+											<td height="25"><strong class="seachpaddingleft">Select :</strong> <a href="#" title="All" class="greylink-normal" onclick="chkallmsg(true);">All</a>, <a href="#" title="None" class="greylink-normal" onclick="chkallmsg(false);">None</a>, <a href="#" title="Read" class="greylink-normal" onclick="getReqmsg(1);">Read</a>, <a href="#" class="greylink-normal" title="Unread" onclick="getReqmsg(0);">Unread</a>&nbsp;
+												<select name="moreaction" class="selectmenu" id="moreaction" onchange="doaction(this.value);">
+													<option  value="">More action..</option>
+													<option value="1" {if $action eq 1}selected{/if}>Make as read</option>
+													<option value="0" {if $action eq 0}selected{/if}>Make as Unread</option>
+													</select>												</td>
+									<td align="right">{$recmsg}&nbsp;&nbsp;<span class=bmatter>Pages</span> :{$page_link}</td>
+								</tr>
+										{else}
+										<tr>
+											<td colspan="2" height="25" align="center" class="red-matter">{$recmsg}</td>
+								</tr>	
+										{/if}
+										
+										{if $num_totrec gt 0}
+										<tr>
+											<td  colspan="2" valign="top">
+												<table width="100%" border="0" class="table-border-status" cellspacing="0" cellpadding="0">
+													{if  $msgs|@count gt 0}
+													{section name=j loop=$msgs}
+													{if $msgs[j].eRead eq 0} 
+													{assign var="class" value="unreadmail-bg"}
+													{else}
+													{assign var="class" value="td-bg"}
+													{/if}
+													<tr >
+														<td width="4%" height="22" class="tr" class="{$class}"><input  type="checkbox" name="ch[]" id='iId_{$msgs[j].iMailId}'  value="{$msgs[j].iMailId}" onchange="showdropdown();"/></td>
+											<td width="30%" align="left" class="{$class}"><a class="sender-link" class="linktext">{$msgs[j].from_name}</a></td>
+											<td width="45%" class="{$class}"><a href="{$site_url}/msgdetail/{$msgs[j].iMailId}/inbox" {if $msgs[j].eRead eq 0} {/if} class="linktext">{$msgs[j].vSubject}</a></td>
+											<td width="20%" align="center" class="{$class}"><a class="linktext">{$msgs[j].dMaildate}</a></td>
+										</tr>
+													{/section}
+													{/if}
+													<input  type="hidden" name="no" id="no" value="{$count_msg}">
+													</table>									</td>
+								</tr>
+										<tr>
+											<td height="25"><strong>Select :</strong> <a href="#" title="All" class="greylink-normal" onclick="chkallmsg(true);">All</a>, <a href="#" title="None" class="greylink-normal" onclick="chkallmsg(false);">None</a>, <a href="#" title="Read" class="greylink-normal" onclick="getReqmsg(1);">Read</a>, <a href="#" class="greylink-normal" title="Unread" onclick="getReqmsg(0);">Unread</a></td>
+									<td align="right">{$recmsg}&nbsp;&nbsp;<span style="color:#7A7A7A; font-size:15px;">Pages</span> :{$page_link}</td>
+								</tr>
+										{else}
+										<tr>
+											<td colspan="2" height="25" align="center"></td>
+								</tr>	
+										{/if}
+										</table>							</td>
+    					</tr>
+							<tr>
+								<td width="3"><img src="{$tconfig["front_images"]}gr-bottleftcorner.gif" alt="" border="0" /></td>
+                    		<td class="gr-bg"><img src="{$tconfig["front_images"]}spacer.gif" height="1" width="1" /></td>
+                    		<td width="3"><img src="{$tconfig["front_images"]}gr-bottrightcorner.gif" alt="" border="0" /></td>
+						</tr>
+							</table>					</td>
+				</tr>
+			</table></td>
+</tr>
+</table></div>
+</form>
+{literal}
+<script>
+//auto hide msg after five second.	
+/*<?//if(GetVar('var_msg') !='') { ?>
+$('msgrow').style.display="";
+	setTimeout("$('msgrow').style.display='none';",5000);
+<?}?>*/
+
+function showdropdown()
+{
+	var chks = document.getElementsByName('ch[]');
+        var hasChecked = false;
+        for (var i = 0; i < chks.length; i++)
+        {
+                if (chks[i].checked)
+                {
+                        hasChecked = true;
+                        break;
+                }
+        }
+        if (!hasChecked)
+        {
+                alert("Please select at least one e-mail.");
+                chks[0].focus();
+                return false;
+        }
+}
+
+if('{/literal}{$var_msg}{literal}' != '')
+{
+	document.getElementById("msgrow").setAttribute("class", "show");
+	setTimeout("$('#msgrow').addClass('displaynone');",5000);
+}
+function getRedirect(){
+	var txtVal = document.getElementById("vSearch").value;
+	//alert(txtVal);
+	window.location = 'index.php?file=m-myinbox&vSearch='+txtVal;
+}
+function chkallmsg(val)
+{
+	for(i=0;i<readarr.length;i++)
+	{
+		$('iId_'+readarr[i][1]).checked = val;
+	}
+}
+function getReqmsg(val){
+	for(i=0;i<readarr.length;i++){
+		if(val == readarr[i][0]){
+				$('iId_'+readarr[i][1]).checked = true;
+		}else{
+				$('iId_'+readarr[i][1]).checked = false;
+		}
+	}
+}
+
+function doaction(val)
+{
+	$('#view').val(val);
+	var chks = document.getElementsByName('ch[]');
+        var hasChecked = false;
+        for (var i = 0; i < chks.length; i++)
+        {
+                if (chks[i].checked)
+                {
+                        hasChecked = true;
+                        break;
+                }
+        }
+        if (!hasChecked)
+        {
+                alert("Please select at least one e-mail.");
+                chks[0].focus();
+                return false;
+        }
+	document.frmlist.submit();
+	
+}
+
+
+function doaction_backup(val)
+{
+	$('#view').val(val);
+	if(val == 'Delete')
+	{
+		var conf;
+		var y ;
+		y= chkcount();
+		alert(y);
+		if(y > 0){
+			conf = confirm("Confirm Deletion of Selected Record(s) ?");
+			if(conf == true)
+			{	
+				$('view').value= 'Delete';
+				document.frmlist.submit();
+			}else{
+				return false;
+			}
+		}else{
+			alert("Please select message(s) to delete.");
+			return false;
+		}	
+	}
+	
+	if(val != ''){
+		document.frmlist.submit();
+	}else
+		return false;
+}
+
+function chkcount()
+{	
+	var x=0;
+	
+	for(i=0;i<readarr.length;i++){
+		//$('iId_'+readarr[i][1]).checked = val;
+		if($('iId_'+readarr[i][1]).checked == true){
+			x = "1";
+		}
+	}
+	return x;
+}
+</script>
+
+{/literal}
+
