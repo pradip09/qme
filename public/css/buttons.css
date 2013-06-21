@@ -1,0 +1,346 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+.12px {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+.13px {
+  font-size: 13px;
+  font-size: 0.8175rem;
+}
+.14px {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+.15px {
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+.18px {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+.automargin {
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Transition*/
+.x {
+  background-repeat: repeat-x;
+}
+/*fonts variables*/
+.fontbutton {
+  font-size: 0.9em;
+  font-family: 'allerregular', Arial;
+}
+.driodbutton {
+  font-size: 0.8125rem;
+  font-family: 'Driod Sans', Arial;
+  font-weight: 800;
+}
+/*checking styles*/
+.chk {
+  border: 1px solid red;
+}
+.chk1 {
+  background-color: #666;
+}
+/*************all buttons styles for theme of QME ********/
+.postbtn {
+  -webkit-border-radius: 3px 0px 0px 0px;
+  border-radius: 3px 0px 0px 0px;
+  display: block;
+  color: #131716;
+  margin-right: 15px;
+  margin-bottom: 9px;
+  line-height: 27px;
+  padding: 0px 13px 0 7px;
+  font-size: 0.9em;
+  font-family: 'allerregular', Arial;
+  height: 29px;
+  position: absolute;
+  top: 39px;
+  right: 7px;
+  text-indent: 5px;
+}
+.posticon {
+  display: block;
+  background: url('../images/sprite.png') no-repeat -8px -3px;
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin-left: 0;
+  margin-top: 5px;
+}
+.btnGreypost {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  border-top: 1px solid #b4b7bd;
+  border-left: 1px solid #b4b7bd;
+  border-right: none;
+  border-bottom: none;
+}
+.btnGreypost:hover {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  border-top: 1px solid #ec873f;
+  border-left: 1px solid #ec873f;
+  border-right: none;
+  border-bottom: none;
+  background-position: left top;
+}
+.btn {
+  clear: both;
+  cursor: pointer;
+  margin: 0 auto;
+  text-decoration: none !important;
+  display: block;
+}
+.btnGrey {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  border: 1px solid #87909b;
+}
+.btnGrey:hover {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  background-position: left top;
+  border: 1px solid #ec873f;
+}
+.btnOrange {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  background-position: top left;
+  border: 1px solid #ec873f;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.btnOrange:hover {
+  background-image: url(../images/btnorange29px.png);
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  border: 1px solid #87909b;
+}
+.btnTop {
+  background-image: url(../images/btndark29px.png);
+  background-repeat: repeat-x;
+  background-position: 0 -58px;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  height: 29px;
+  text-indent: 18px;
+}
+.btnTop_active,
+.btnTop:hover {
+  height: 29px;
+  text-indent: 18px;
+  background-image: url(../images/btndark29px.png);
+  background-repeat: repeat-x;
+  background-position: bottom left;
+}
+.inbox {
+  background: url('../images/spriteinbox.png') no-repeat 0 0;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 15px;
+  position: absolute;
+  top: 7px;
+  left: 10px;
+}
+.friends {
+  background: url('../images/spriteinbox.png') no-repeat 0 -24px;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 13px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+.profileicon {
+  background: url('../images/spriteinbox.png') no-repeat 0 -46px;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 14px;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+}
+.round29 {
+  color: #ededed;
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 9px;
+  line-height: 29px;
+  padding: 0px 18px;
+  -moz-border-radius: 29px;
+  -webkit-border-radius: 29px;
+  border-radius: 29px;
+  /* Prevent background color leak outs */
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-family: 'Driod Sans', Arial;
+  font-weight: 800;
+  position: relative;
+}
+.round31 {
+  color: #ededed;
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 9px;
+  line-height: 29px;
+  padding: 0px 18px;
+  -moz-border-radius: 29px;
+  -webkit-border-radius: 29px;
+  border-radius: 29px;
+  /* Prevent background color leak outs */
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  font-size: 13px;
+  font-size: 0.9em;
+  font-family: 'allerregular', Arial;
+}
+.square29 {
+  color: #131716;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 9px;
+  line-height: 27px;
+  padding: 0px 18px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* Prevent background color leak outs */
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  font-size: 0.9em;
+  font-family: 'allerregular', Arial;
+  height: 29px;
+}
+.square31 {
+  color: #131716;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 9px;
+  line-height: 27px;
+  padding: 0px 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* Prevent background color leak outs */
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  font-size: 0.9em;
+  font-family: 'allerregular', Arial;
+  height: 31px;
+}
+/*************all buttons styles for main page and campaign page ********/
+.btnget {
+  clear: both;
+  display: block;
+  height: 71px;
+  width: 300px;
+  background: url(../images/btngetqd.png) no-repeat;
+  background-position: left top;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.btnget span.hover {
+  display: block;
+  height: 71px;
+  width: 300px;
+  text-align: center;
+  font-size: 0px;
+  background: url(../images/btngetqd.png) no-repeat;
+  background-position: left bottom;
+}
+.btnlogo {
+  display: block;
+  height: 101px;
+  width: 101px;
+  background: url(../images/logo.png) no-repeat;
+  background-position: left top;
+  cursor: pointer;
+}
+.btnlogo span.hover {
+  display: block;
+  height: 101px;
+  width: 101px;
+  text-align: center;
+  font-size: 0px;
+  background: url(../images/logo.png) no-repeat;
+  background-position: left bottom;
+}
+.btnfeedback {
+  display: block;
+  height: 270px;
+  width: 59px;
+  background: url(../images/btnfeedback.png) no-repeat;
+  background-position: left top;
+  cursor: pointer;
+}
+.btnfeedback span.hover {
+  display: block;
+  height: 270px;
+  width: 59px;
+  text-align: center;
+  font-size: 0px;
+  background: url(../images/btnfeedback.png) no-repeat;
+  background-position: right top;
+}
+.btnlearn {
+  clear: both;
+  display: block;
+  height: 33px;
+  width: 102px;
+  background: url(../images/btnlearnmore.png) no-repeat;
+  background-position: top left;
+  cursor: pointer;
+}
+.btnlearn span.hover {
+  display: block;
+  height: 33px;
+  width: 102px;
+  text-align: center;
+  font-size: 0px;
+  background: url(../images/btnlearnmore.png) no-repeat;
+  background-position: bottom left;
+}
+.btnlearnsm {
+  clear: both;
+  display: block;
+  height: 10px;
+  width: 100px;
+  background: url(../images/btnlearnsmall.png) no-repeat;
+  background-position: top left;
+  cursor: pointer;
+}
+.btnlearnsm span.hover {
+  display: block;
+  height: 10px;
+  width: 100px;
+  text-align: center;
+  font-size: 0px;
+  background: url(../images/btnlearnsmall.png) no-repeat;
+  background-position: bottom left;
+}
+/*-**********button style ends here ******/

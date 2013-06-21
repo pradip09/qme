@@ -1,0 +1,55 @@
+<?php
+error_reporting(0);
+session_start();
+defined( '_TEXEC' ) or die( 'Restricted access' );
+
+$parts = explode( DS, TPATH_BASE );
+define( 'TPATH_ROOT',			TPATH_BASE );
+define( 'TPATH_ADMINISTRATOR', 	TPATH_ROOT.DS.'quotadmin' );
+define( 'TPATH_LIBRARIES', 		TPATH_ROOT.DS.'libraries' );
+define( 'TPATH_CLASS_APP', 		TPATH_ROOT.DS.'libraries'.DS.'application' );
+define( 'TPATH_TEMPLATES', 		TPATH_ROOT.DS.'templates' );
+define( 'TPATH_ADMIN_TEMPLATES', 		TPATH_ADMINISTRATOR.DS.'templates' );
+define( 'TPATH_ADMIN_TEMPLATES_C', 		TPATH_ADMINISTRATOR.DS.'templates_c' );
+define( 'TPATH_ADMIN_MODULES', 		TPATH_ADMINISTRATOR.DS.'modules' );
+define( 'TPATH_CLASS_DATABASE', 		TPATH_ROOT.DS.'libraries'.DS.'database/' );
+define( 'TPATH_CLASS_DATABASE', 		TPATH_ROOT.DS.'libraries'.DS.'database/' );
+define( 'TPATH_CLASS_GEN', 		TPATH_ROOT.DS.'libraries'.DS.'general/' );
+define( 'TPATH_PUBLIC_HTML', 	TPATH_ROOT.DS.'public_html' );
+define( 'TPATH_CACHE', 		TPATH_PUBLIC_HTML.DS.'cache' );
+define( 'TPATH_SERVER_IMAGES', 	TPATH_ROOT.DS.'images' );
+define( 'TPATH_UPLOADS', 	TPATH_ROOT.DS.'public_html/uploads' );
+define( 'TPATH_UPLOADS_SERIES', 	TPATH_UPLOADS.DS.'series' );
+define( 'TPATH_UPLOADS_EPISODES', 	TPATH_UPLOADS.DS.'episodes' );
+define( 'TPATH_UPLOADS_SLIDER_HOME', 	TPATH_UPLOADS.DS.'slider_home' );
+
+
+if($_SERVER["HTTP_HOST"] == "localhost" || $_SERVER["HTTP_HOST"] == "192.168.1.2")
+{
+	define( 'TSITE_SERVER','localhost');
+	define( 'TSITE_DB','quotation');
+	define( 'TSITE_USERNAME','root');
+	define( 'TSITE_PASS','root');
+}
+else
+{
+	define( 'TSITE_SERVER','localhost');
+	define( 'TSITE_DB','');
+	define( 'TSITE_USERNAME','');
+	define( 'TSITE_PASS','');
+}
+
+
+if(!isset($obj))
+{
+	require_once(TPATH_CLASS_DATABASE."class.dbquery.php");
+	$obj=	new DBConnection(TSITE_SERVER, TSITE_DB, TSITE_USERNAME,TSITE_PASS);
+	
+}
+if(!isset($generalobj)){
+	require_once(TPATH_CLASS_GEN."class.general.php");
+	$generalobj=new General();
+}
+
+$generalobj->getGeneralVar();
+?>
