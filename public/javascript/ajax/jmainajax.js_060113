@@ -1,0 +1,817 @@
+function displayadmincapagin(start){
+	var extra ='';
+	extra+='&start='+start;
+	var url = site_url+"/index.php?file=a-ajadmincampaginlist";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#campaignlistdiv')){
+			$('#campaignlistdiv').html(data);
+		}
+	});
+}
+
+
+function displayadminjob(start){
+	
+	var extra ='';
+	extra+='&start='+start;
+	var url = site_url+"/index.php?file=a-ajadminjoblist";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#joblistdiv')){
+			$('#joblistdiv').html(data);
+		}
+	});
+	
+}
+
+function displaypublicprofile(start,iMemberId){
+	$('#recentactivity_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;    
+	var url = site_url+"/index.php?file=a-ajpublicprofile";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {		
+		if($('#activity_feed')){			
+			$('#activity_feed').html(data);
+		}
+		
+		$('#recentactivity_loading').hide();
+	});
+	
+}
+function publicreleventnews(start,iMemberId){
+	$('#releventnews_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	//extra+='&iCategoryId='+iCategoryId;
+	var url = site_url+"/index.php?file=a-ajreleventnews";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#relevent_news')){
+			$('#relevent_news').html(data);
+		}
+		$('#releventnews_loading').hide();
+	});	
+}
+function displayreleventnews(start,iMemberId){
+	//alert('hello');
+	$('#releventnews_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	
+	var url = site_url+"/index.php?file=a-ajmyaccountnews";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		if($('#myaccount_news')){
+			$('#myaccount_news').html(data);
+		}
+		$('#releventnews_loading').hide();
+	});	
+}
+function displayallcapaginlist(start){
+	
+	var extra ='';
+	extra+='&start='+start;
+	if($('#searchcampaign')){
+        if($('#searchcampaign').val() !=''){
+            var searchtext = $('#searchcampaign').val(); 
+            extra+='&searchtext='+searchtext;
+	    }
+	}
+	if($('#vIndustry')){
+        if($('#vIndustry').val() !=''){
+         var searchindustry = $('#vIndustry').val();
+         extra+='&searchindustry='+searchindustry;
+        }
+	}
+	if($('#searchcountry')){
+        if($('#searchcountry').val() !=''){
+            var searchcountry = $('#searchcountry').val(); 
+            extra+='&searchcountry='+searchcountry;
+            
+        }    
+	}
+	 if($('#searchstate')){
+	    if($('#searchstate').val() !=''){
+		var searchstate = $('#searchstate').val(); 
+		extra+='&searchstate='+searchstate;
+		
+	    }    
+	}
+	if($('#searchzip')){
+	    if($('#searchzip').val() !=''){
+		var searchzip = $('#searchzip').val(); 
+		extra+='&searchzip='+searchzip;
+		
+	    }    
+	}
+	
+	$('#campagin_loading').show();
+	var url = site_url+"/index.php?file=a-ajallcampaginlist";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		
+		$('#campagin_loading').hide();    
+		if($('#browseallcampaignlistdiv')){
+			$('#browseallcampaignlistdiv').html(data);
+		}
+	});
+	
+}
+function displaymyevent(start){
+        
+	$('#myevent_loading').show();   
+	var extra ='';
+	extra+='&start='+start;
+	var url = site_url+"/index.php?file=a-ajmyevent";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#myevent_loading').hide();    
+		if($('#eventlistdiv')){
+			$('#eventlistdiv').html(data);
+		}
+	});
+	
+}
+
+function searchjoblist(start){
+	
+ var extra ='';
+	extra+='&start='+start;
+    if($('#searchjob')){
+        if($('#searchjob').val() !=''){
+            var searchtext = $('#searchjob').val(); 
+            extra+='&searchtext='+searchtext;
+        }    
+    }
+    
+    if($('#searchcountry')){
+        if($('#searchcountry').val() !=''){
+            var searchcountry = $('#searchcountry').val(); 
+            extra+='&searchcountry='+searchcountry;
+            
+        }    
+    }
+     if($('#searchstate1')){
+        if($('#searchstate').val() !=''){
+            var searchstate = $('#searchstate').val(); 
+            extra+='&searchstate='+searchstate;
+            
+        }    
+    }
+    if($('#searchzip')){
+        if($('#searchzip').val() !=''){
+            var searchzip = $('#searchzip').val(); 
+            extra+='&searchzip='+searchzip;
+            
+        }    
+    }
+  
+    	var url = site_url+"/index.php?file=a-ajalljoblist";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+	$('#searchdataqme').hide();
+        if($('#browsealljoblistdiv')){
+			$('#browsealljoblistdiv').html(data);
+		}
+	});
+}
+
+function displaymyphotocategory(start,UserId)
+{
+	$('#photoalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajmyphotocategory";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#photoalbum_loading').hide();
+		if($('#myphotocategoryId')){
+			$('#myphotocategoryId').html(data);
+		}
+	});
+}
+
+function displaypublicprofilephotoalbum(start,UserId)
+{
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajpublicprofilephotoalbum";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#myphotocategoryId')){
+			$('#myphotocategoryId').html(data);
+			
+		}
+		
+	});
+}
+
+function displaypublicprofilecompaign(start,UserId)
+{
+	
+	$('#publiccampaign_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajpublicprofilecompaign";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		$('#publiccampaign_loading').hide();    
+		if($('#browseallcampaignlistdiv')){
+			$('#browseallcampaignlistdiv').html(data);
+		}
+	});
+	
+}
+
+function displaypublicprofilejob(start,UserId)
+{
+	$('#mypostjob_loading').show();    
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajpublicprofilejob";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#mypostjob_loading').hide();    
+		if($('#displaymemberjobs')){
+			$('#displaymemberjobs').html(data);
+		}
+	});
+	
+}
+
+function getallphotos(start,PhotoId)
+{	
+	$('#allphotos_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iCatPhotoId='+PhotoId;
+	var url = site_url+"/index.php?file=a-ajmyphotos";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#allphotos_loading').hide();
+		if($('#myallphotos')){
+			$('#myallphotos').html(data);
+		}
+	});
+}
+function publicprofileallphotos(start,PhotoId,UserId)
+{
+	$('#publicphotoalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&UserId='+UserId;
+	extra+='&iCatPhotoId='+PhotoId;
+	var url = site_url+"/index.php?file=a-ajpublicallphotos";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#publicphotoalbum_loading').hide();
+		if($('#myallphotos')){
+			$('#myallphotos').html(data);
+		}
+	});
+}
+function publicprofileallstore(start,UserId)
+{
+	
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&UserId='+UserId;
+	var url = site_url+"/index.php?file=a-ajpublicallstore";
+	var pars = extra;	
+	$.post(url+pars,
+            function(data) {
+		if($('#myallstore')){
+			$('#myallstore').html(data);
+		}
+	});
+}
+function getStates(countryId)
+{
+	//alert(countryId);
+	var extra ='';
+	extra+='&countryId='+countryId;
+	var url = site_url+"/index.php?file=a-ajstatelist";
+	var pars = extra;	
+	$.post(url+pars,
+            function(data) {
+		//alert(data);
+		if($('.showallstates')){
+			$('.showallstates').html(data);
+		}
+	});
+}
+
+function getStatePostjob(countryId,iPostJobId)
+{
+	var extra ='';
+	extra+='&countryId='+countryId;
+	extra+='&iPostJobId='+iPostJobId;
+	var url = site_url+"/index.php?file=a-ajstatejob";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('.displaystate')){
+			$('.displaystate').html(data);
+		}
+	});
+}
+
+function displaybrowscamp(countryId){
+	
+	var extra ='';
+	extra+='&countryId='+countryId;
+	//extra+='&id='+id;
+	var url = site_url+"/index.php?file=a-ajbrowsecamplist";
+	var pars = extra;	
+	$.post(url+pars,
+            function(data) {
+		//alert(data);
+		if($('.browsecampstate')){
+			$('.browsecampstate').html(data);
+		}
+	});
+	
+}
+function getStateQmeIn(countryId,iQmeInId)
+{
+	var extra ='';
+	extra+='&countryId='+countryId;
+	extra+='&iQmeInId='+iQmeInId;
+	var url = site_url+"/index.php?file=a-ajstateqmein";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#showallstatesqmein')){
+			$('#showallstatesqmein').html(data);
+		}
+	});
+}
+
+function loadCropper(xhr)
+{
+	var img = xhr.responseText;
+	var extra ='';
+	extra+='&imgName='+img;
+	extra+='&iBannerId='+iBannerId;
+	var url = site_url+"/index.php?file=a-ajcropbannerhtml";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#uploadedImageShow')){
+			$('#uploadedImageShow').html(data);
+		}	
+	});
+}
+
+function showUploadedBannerImage(xhr)
+{
+	var iBannerId = xhr.responseText;
+	var extra ='';
+	extra+='&iBannerId='+iBannerId;
+	extra += '&bannerNum='+bannerNum;	
+	var url = site_url+"/index.php?file=a-ajshowbannerimage";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		if($('#showbannerarea'+bannerNum)){
+			$('#showbannerarea'+bannerNum).html(data);
+		}		
+	});
+}
+function displaymyvideoalbum(start,UserId)
+{
+	$('#videoalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajmyvideos";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#videoalbum_loading').hide();
+		if($('#myvideocategoryId')){
+			$('#myvideocategoryId').html(data);
+		}
+	});
+}
+
+function getallvideos(start,iVideoAlbumId)
+{
+	$('#allvideos_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iVideoAlbumId='+iVideoAlbumId;
+	var url = site_url+"/index.php?file=a-ajmyallvideos";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#allvideos_loading').hide();
+		if($('#myvideoId')){
+			$('#myvideoId').html(data);
+		}
+	});
+}
+
+function displaymysongalbum(start,UserId)
+{
+	$('#songalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajmysongs";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#songalbum_loading').hide();	
+		if($('#mysongalbum')){
+			$('#mysongalbum').html(data);
+		}
+	});
+}
+
+function getallsongs(start,iSongAlbumId)
+{
+	$('#allsongs_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iSongAlbumId='+iSongAlbumId;
+	var url = site_url+"/index.php?file=a-ajmyallsongs";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#allsongs_loading').hide();
+		if($('#myallsongs')){
+			$('#myallsongs').html(data);
+		}
+	});
+}
+
+function displaymyjobs(start,iMemberId)
+{
+	$('#mypostjob_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	var url = site_url+"/index.php?file=a-ajmypostjobs";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+			$('#mypostjob_loading').hide();
+		if($('#displaymemberjobs')){
+			$('#displaymemberjobs').html(data);
+		}
+	});
+}
+
+function displaymyblog(start,iMemberId)
+{
+	$('#myblog_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	var url = site_url+"/index.php?file=a-ajmybloglist";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+			$('#myblog_loading').hide();
+		if($('#displaymyblog')){
+			$('#displaymyblog').html(data);
+		}
+	});
+}
+function displaymypostcampaign(start,iMemberId)
+{
+	$('#mycamp_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	var url = site_url+"/index.php?file=a-ajmypostcampiagn";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+			$('#mycamp_loading').hide();
+		if($('#displaypostcampaign')){
+			$('#displaypostcampaign').html(data);
+		}
+	});
+}
+function displaymyqmein(start,iMemberId)
+{
+	$('#qmein_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	var url = site_url+"/index.php?file=a-ajmyqmein";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#qmein_loading').hide();
+		if($('#displayqmein')){
+			$('#displayqmein').html(data);
+		}
+	});
+}
+
+function displayrecentactivity(start,iMemberId)
+{
+	
+	$('#recent_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;
+	var url = site_url+"/index.php?file=a-ajrecentactivity";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#recent_loading').hide();
+		if($('#displayactivity')){
+			$('#displayactivity').html(data);
+		}
+	});
+}
+
+function displayfundraisercompaign(start,UserId)
+{
+	$('#publiccampaign_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+UserId;
+	var url = site_url+"/index.php?file=a-ajfundcompaign";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#publiccampaign_loading').hide();    
+		if($('#browseallfundcampaignlistdiv')){
+			$('#browseallfundcampaignlistdiv').html(data);
+		}
+	});	
+}
+
+function publicprofileallsongs(start,SongId,UserId)
+{
+	$('#publicphotoalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&UserId='+UserId;
+	extra+='&iCatSongId='+SongId;
+	var url = site_url+"/index.php?file=a-ajpublicallsongs";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		$('#publicphotoalbum_loading').hide();
+		if($('#myallsongs')){
+			$('#myallsongs').html(data);
+		}
+	});
+}
+
+function publicprofileallvideos(start,VideoId,UserId)
+{
+	$('#publicphotoalbum_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&UserId='+UserId;
+	extra+='&iCatVideoId='+VideoId;
+	var url = site_url+"/index.php?file=a-ajpublicallvideos";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		$('#publicphotoalbum_loading').hide();
+		if($('#myallvideos')){
+			$('#myallvideos').html(data);
+		}
+	});
+}
+function displayfrndrequest(start)
+{
+	$('#request_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	var url = site_url+"/index.php?file=a-ajfrient_request";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		$('#request_loading').hide();
+		if($('#frndrequestdiv')){
+			$('#frndrequestdiv').html(data);
+		}
+	});
+}
+
+function allfrnds(id)
+{
+	$('#request_loading').show();
+	var extra ='';
+	extra+='&iMemberId='+id;
+	var url = site_url+"/index.php?file=a-ajpublicfrndlist";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {		
+		$('#request_loading').hide();
+		if($('#public_frndlist')){
+			$('#public_frndlist').html(data);
+		}
+	});
+}
+function displaymyallfriends(start)
+{
+	$('#request_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	var url = site_url+"/index.php?file=a-ajmyallfriends";
+	var pars = extra;
+	$.post(url+pars,
+            function(data) {
+		//alert(data);
+		if($('#displaymyfriends')){
+			$('#displaymyfriends').html(data);
+		}
+	});
+}
+function displayrecentFriend(start,iMemberId){
+	
+	$('#recentfrnd_loading').show();
+	var extra ='';
+	extra+='&start='+start;
+	extra+='&iMemberId='+iMemberId;    
+	var url = site_url+"/index.php?file=a-ajrecentfriens";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+            function(data) {
+		//alert(data);
+		if($('#recent_frnd')){
+			$('#recent_frnd').html(data);
+		}
+		$('#recentfrnd_loading').hide();
+	});
+}
+function searchqme(start)
+{
+	
+	var extra = '';
+	if($('#searchmode').val() == 'member')
+	{
+		var eTypeSearch = $('#searchmode').val();
+		extra+='&eTypeSearch='+eTypeSearch;
+	
+	}else if($('#searchmode').val() == 'bizmember')
+	{
+		var eTypeSearch = $('#searchmode').val();
+		extra+='&eTypeSearch='+eTypeSearch;
+		
+	}else if($('#searchmode').val() == 'campaign')
+	{
+		var eTypeSearch = $('#searchmode').val();
+		extra+='&eTypeSearch='+eTypeSearch;
+		
+	}else{
+		$('#searchmsg').html("Please select search option").addClass('errormsg').fadeTo(900,1);
+		return false;
+	        
+	}
+	if($('#searchqme')){
+		if(($('#searchqme').val() =='')){
+			$('#searchmsg').html("Please enter text in search box").addClass('errormsg').fadeTo(900,1);
+			return false;
+		}else{
+			 var searchqme = $('#searchqme').val();
+			// alert(searchqme);
+			extra+='&searchqme='+searchqme;
+		}
+	}
+	//alert(extra);
+	$('#displayactivity').hide();
+	$('#recentactivity').hide();
+	$('#searchdataqme').show();
+	var url = site_url+"/index.php?file=a-ajsearchkeyword";
+	var pars = extra;
+	//alert(url+pars);
+	$.post(url+pars,
+        function(data) {
+		
+	        id = data.split('/');
+                var keyword = id[0];
+                var type = id[1];		
+		var url = site_url+"/search_result/";		
+                window.location.href = url;		
+		$('#searchmsg').html("").addClass('errormsg').fadeTo(900,1);
+		$('#displaysearchdata').html(data);
+		$('#displayactivity').hide();
+		$('#recentactivity').hide();
+		$('#displaysearchdata').show();
+		$('#searchdataqme').hide();
+	         
+	});
+	
+}
+
+function selectmode(mode)
+{
+	
+	var mode = mode;
+	if(mode == 'campaign')
+	{
+		document.getElementById("Anything").setAttribute("class", "current");
+		$('#People').addClass('inactive');
+		$('#Business').addClass('inactive');
+		$('#searchmode').val('campaign');
+		$('#searchqme').val('');
+		$('#search_type').html('QME Search');
+		$('#searchqme').prop('placeholder', "A new way to search everything!");
+	}else if(mode == 'member')
+	{
+		document.getElementById("People").setAttribute("class", "current");
+		$('#Anything').addClass('inactive');
+		$('#Business').addClass('inactive');
+		$('#searchmode').val('member');
+		$('#searchqme').val('');
+		$('#search_type').val('');
+		$('#search_type').html('People');
+		$('#searchqme').prop('placeholder', "Input Persons Name");
+		
+	}else if(mode == 'bizmember')
+	{
+		document.getElementById("Business").setAttribute("class", "current");
+		$('#People').addClass('inactive');
+		$('#Anything').addClass('inactive');
+		$('#searchmode').val('bizmember');
+		$('#searchqme').val('');
+		$('#search_type').val('');
+		$('#search_type').html('Business');
+		$('#searchqme').prop('placeholder', "Business name");
+	}
+	//alert($('#searchmode').val());
+	return false;
+}
+
+function selectmode_data(mode,data)
+{
+	
+	var mode = mode;
+	if(mode == 'campaign')
+	{
+		document.getElementById("Anything").setAttribute("class", "current");
+		$('#People').addClass('inactive');
+		$('#Business').addClass('inactive');
+		$('#searchmode').val('campaign');
+		$('#searchqme').val('');
+		$('#search_type').html('QME Search');
+		$('#searchqme').val(data);
+		//$('#searchqme').prop('placeholder', "A new way to search everything!");
+	}else if(mode == 'member')
+	{
+		document.getElementById("People").setAttribute("class", "current");
+		$('#Anything').addClass('inactive');
+		$('#Business').addClass('inactive');
+		$('#searchmode').val('member');
+		$('#searchqme').val('');
+		$('#search_type').val('');
+		$('#search_type').html('People');
+		$('#searchqme').val(data);
+		//$('#searchqme').prop('placeholder', "Input a person name");
+		
+	}else if(mode == 'bizmember')
+	{
+		document.getElementById("Business").setAttribute("class", "current");
+		$('#People').addClass('inactive');
+		$('#Anything').addClass('inactive');
+		$('#searchmode').val('bizmember');
+		$('#searchqme').val('');
+		$('#search_type').val('');
+		$('#search_type').html('Business');
+		$('#searchqme').val(data);
+		//$('#searchqme').prop('placeholder', "Business name");
+	}
+	//alert($('#searchmode').val());
+	return false;
+}

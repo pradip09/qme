@@ -1,0 +1,166 @@
+/************************************************************************
+*************************************************************************
+@Name :       	Selectyze - jQuery Plugin CSS
+@Revison :    	1.0
+@Date : 		19/12/2011
+@Author:     	Mickael SURREL - ALPIXEL Agency - (www.myjqueryplugins.com - www.alpixel.fr) 
+@License :		 Open Source - MIT License : http://www.opensource.org/licenses/mit-license.php
+ 
+**************************************************************************
+*************************************************************************/
+
+/***************************/
+/** Common to every theme **/
+/***************************/
+ul{
+margin: 0;
+padding: 0;
+list-style-position:inside;
+list-style:circle;
+}
+
+ul li{
+    margin-left:0 !important;
+}
+
+
+:focus, :active {
+outline: 0;
+border: 0;
+}
+
+
+
+.DivSelectyze {
+	position:relative;
+	width:115px;
+	float:left;
+	margin-top:2px;
+	margin-left:1px;
+	
+}
+
+.DivSelectyze .selectyzeValue {
+	position:relative;
+	z-index:10;
+	display:block;
+	text-decoration:none;
+}
+
+.DivSelectyze ul {list-style:none;}
+.DivSelectyze .UlSelectize {
+	position:absolute;
+	z-index:9999;
+	display:none;
+}
+
+.DivSelectyze li a {
+	display:block;
+	text-decoration:none;
+}
+
+.optgroupTitle {
+	display:block;
+}
+/*******************************/
+/** END COMMON TO EVERY THEME **/
+/*******************************/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+/*----------------------------------
+ You can add your own theme below !!
+ To add your theme, be sure to have 5 CSS elements :
+ 
+ .your_theme .selectyzeValue {} 		-> Appearance of your select element
+ .your_theme .UlSelectize {} 			-> Appearance of the dropdown list
+ .your_theme li a {} 					-> Appearance of the items into the dropdown list
+ .your_theme li a:hover {} 				-> items on hover
+ .your_theme .optgroupTitle {} 			-> Appearance of the optgroup label !! only if you have <optgroup> element into your list 
+ 
+ 
+ that's all ! \o/
+----------------------------------*/
+
+
+	
+	
+	/*****************/
+	/** MAC THEME **/
+	/*****************/
+
+	
+	
+.mac .selectyzeValue {
+		font:13px Arial;
+		color:#000000;
+		width:111px;
+		height:27px;
+		background:url('bg_mac2.png') no-repeat;
+		padding-left:15px;
+		line-height:27px;
+		display:block;
+		float:left;
+
+	}
+
+	.mac .UlSelectize {
+		
+		margin:0;
+		padding:0;
+		top:35px;
+		left:0px;
+		background-color:#fff;
+		border:0 solid #b7b7b7;
+		text-align:left;
+		overflow:hidden;
+		
+		padding-left:0 !important;
+		list-style-position:inside;
+		
+		
+		
+		
+	}
+
+	.mac li a {
+		height:27px;
+		font:13px/20px Arial;
+		background-color:transparent;
+		color:#000;
+		padding:0px 25px 0 15px;
+		line-height:27px;
+		text-align:left;
+		width:100%;
+		display:block;
+		float:left;
+		border-bottom:1px solid #E8E9E9;
+		
+		
+		
+	}
+
+	.mac li a:hover {
+		color:#fff;
+		border-top:1px solid #262626;
+		background-color:#1e1d1d;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#232222), to(#1e1d1d)); 
+		background-image: -webkit-linear-gradient(top, #232222 #1e1d1d);
+		background-image:    -moz-linear-gradient(top, #232222, #1e1d1d); 
+		background-image:     -ms-linear-gradient(top, #232222, #1e1d1d);
+		background-image:      -o-linear-gradient(top, #232222, #1e1d1d); 
+		background-image:         linear-gradient(top, #232222, #1e1d1d);
+		
+		
+		display:block;
+		float:left;
+	}
+	
+
+	
+	
+	
+		
+	

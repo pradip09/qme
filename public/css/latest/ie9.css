@@ -1,0 +1,58 @@
+
+/******fixes for NFL profile page *********/
+h1.promo {
+	
+margin-top:10px;	
+}
+
+
+.postbtn{
+	
+	margin-top:6px;
+	
+}
+
+
+.imageslist_container {
+	
+	padding: 25px 0 20px 0;
+}
+
+.imageslist li {
+
+	margin-right: 9px;
+	
+	
+}
+
+
+/***********fixes for NFL profile page END**** /
+
+
+/**fixes for member profile page starts here *******/
+
+
+.likebox_activity_nfl {
+    bottom: 0;
+    display: block;
+    float: right;
+    margin-top: -14px;
+    position: relative;
+    right: 5px;
+    width: 410px;
+}
+
+
+.navact li {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	padding: 10px 2px;
+	float: left;
+	text-align: left;
+	text-indent: 20px;
+	margin-left: 8px;
+	margin-right: 12px;
+	font-size:14px;
+}
+

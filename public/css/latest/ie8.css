@@ -1,0 +1,409 @@
+body{
+
+text-shadow:none;
+
+}
+.bigbox,.smallbox{
+color:#000;
+}
+
+#logo{
+	
+	position:reletive;
+	margin-left:10px;
+	margin-top:0px;
+	
+	
+}
+
+.btnlogo{
+
+	display:block;
+	height: 106px;
+	width: 107px;
+	background:url(../images/logo-ie.png) no-repeat;
+	background-position:left top;
+	cursor: pointer;
+}
+
+.btnlogo span.hover{
+	display: block;
+	height: 106px;
+	width: 107px;
+	text-align: center;
+	font-size:0px;
+	background: url(../images/logo-ie.png) no-repeat;
+	background-position:left bottom;
+}
+
+.btnlearn{
+	clear:both;
+	display:block;
+	height: 33px;
+	width: 102px;
+	background:url(../images/btnlearnmore-ie.png) no-repeat;
+	background-position:top left;
+	cursor: pointer;
+	
+}
+
+.btnlearn span.hover{
+	display: block;
+	height: 33px;
+	width: 102px;
+	text-align: center;
+	font-size:0px;
+	background: url(../images/btnlearnmore-ie.png) no-repeat;
+	background-position:bottom left;
+}
+
+
+.btnlearnsm{
+	clear:both;
+	display:block;
+	height: 10px;
+	width: 100px;
+	background:url(../images/btnlearnsmall-ie.png) no-repeat;
+	background-position:top left;
+	cursor: pointer;
+	
+}
+
+.btnlearnsm span.hover{
+	display: block;
+	height: 10px;
+	width: 100px;
+	text-align: center;
+	font-size:0px;
+	background: url(../images/btnlearnsmall-ie.png) no-repeat;
+	background-position:bottom left;
+}
+
+
+
+
+/******dashboard ie8 fixes******/
+#nav li ul li a { 
+ 
+ font-size:13px;
+ 
+}
+
+#nav > li > a { 
+ font-size:15px;
+ 
+}
+
+
+#nav li ul li a:hover {
+  background:#ffffff url(../images/arrowgrey.png) no-repeat 10px 14px;
+  text-indent:0;
+}
+
+
+	.likebox_activity{
+	display:block;
+	position:relative;
+	float:right;
+	bottom:0;
+	right:0px;
+	width:480px;
+	
+}
+.navact li {
+	
+	margin:0;
+	padding:0;
+	display:inline-block;
+	padding:10px 0;
+	float:left;
+	text-align:right;
+	text-indent:25px;
+	
+	margin-left:5px;
+	margin-right:7px;
+	font-size:13px;
+}
+
+.profile{
+font-size:24px;	
+}
+
+.place{
+	
+   font-size:15px;
+}
+
+#easyNotification{
+	
+	font-size:14px;
+	
+	
+	}
+	
+	#info p{
+		
+	font-size:14px;	
+	}
+	
+	.round29{
+font-size:13px;
+border-radius: 29px;
+  
+position:relative; 
+ behavior: url(PIE.htc);
+}
+
+
+.round31{
+font-size:13px;
+  -webkit-border-radius: 29px;
+border-radius: 29px; 
+behavior: url(PIE.htc);
+ 
+position:relative;
+	
+}
+
+.square29{
+
+font-size:13px;
+}
+
+.square31{
+font-size:13px;
+}
+
+
+
+ul.tabs li {
+		border-top:1px solid #262626;
+		border-left:1px solid #262626;
+		border-right:1px solid #262626;
+		
+	}
+
+	ul.tabs li:hover {
+		position:relative;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+-moz-box-shadow: inset 0 1px 1px #000;
+-webkit-box-shadow: inset 0 1px 1px #000;
+box-shadow: inset 0 1px 1px #000;
+border:1px solid #131716;
+behavior: url(PIE.htc);
+  -pie-watch-ancestors:1;	
+	}
+	
+		
+	ul.tabs li.active{
+-webkit-border-radius: 5px;
+border-radius: 5px; 
+-moz-box-shadow: inset 0 1px 1px #000;
+-webkit-box-shadow: inset 0 1px 1px #000;
+box-shadow: inset 0 1px 1px #000;
+	border:1px solid #131716;
+behavior: url(PIE.htc);
+	}
+
+
+
+/*************fixes for NFL page***********/
+
+
+.imageslist_container {
+	display: block;
+	overflow: hidden;
+	padding: 25px 0 20px 0;
+}
+
+
+
+
+.imageslist li {
+	
+ 
+	margin-right:5px;
+	
+	
+}
+
+
+.nflpostupdate:focus {
+	border: 1px solid #efefef;
+}
+
+.postbtn{
+	display:block;
+	position:relative;
+	float:right;
+	
+	margin-right: 0px !important;
+	margin-bottom: 9px;
+	margin-top:6px;
+	
+
+display:block;
+
+
+line-height:27px;
+padding: 0px 8px 0 5px;
+.fontbutton;
+height:29px;	
+text-indent:8px;
+
+
+}
+
+
+/**************fixes for member profile page *********/
+
+.imageslist_container_member {
+	
+	padding: 20px 12px 20px 15px;
+}
+
+.likebox_activity_nfl {
+	
+	right: 1px;
+	width: 400px;
+	margin-top: -14px;
+}
+
+
+
+	
+	.navact_small li {
+	
+	margin: 0;
+	padding: 0;
+	display: block;
+	float:left;
+	padding: 8px 4px;
+	float: left;
+	text-align:left;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.navcat_small li a {
+	display: block;
+	text-decoration: none;
+	padding: 0;
+	color: @black;
+	font-family: @aller;
+	display: block;
+	float:left;
+}
+
+
+/********form styles correction********/
+
+ input[type="checkbox"]
+ {
+    display:inline-block;
+	float:left;
+	outline:none;
+}
+
+input[type="checkbox"] + label {
+    color:@black;
+	display:inline;
+	float:left;
+	}
+
+input[type="checkbox"] + label span {
+    
+   	display:inline;
+}
+
+input[type="checkbox"]:checked + label span {
+    color:@black;
+	display:inline;
+	float:left;
+}
+
+input[type="radio"] {
+    display:inline-block;
+	float:left;
+	outline:none;
+}
+
+
+input[type="radio"] + label span {
+    display:inline;
+    cursor:pointer;
+	}
+
+input[type="radio"]:checked + label span {
+	color:@black;
+	display:inline;
+	float:left;
+  }
+
+
+
+
+/******form styles fix for ie8*********************************/
+
+
+.formstyled input[type=text], .formstyled input[type=password], .formstyledinput[type=email]{
+	width: 240px;
+	height: 25px;
+	line-height: 25px;
+	border: 1px solid #979ca3;
+	
+	padding:5px;
+	
+	
+}
+
+
+.signupform input[type=text], .signupform input[type=password], .signupform input[type=email]{
+	
+	
+	height: 30px;
+	padding-left:30px;
+	line-height:30px;
+	padding-top:3px;
+	padding-bottom:3px;
+	
+	
+}
+
+
+
+
+.signupform input[type=button], .signupform input[type=reset], .signupform input[type=submit]{
+	
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc46d', endColorstr='#f7a84d',GradientType=0 ); /* IE6-8 */
+
+ }
+ 
+  .signupform input[type=button]:hover, .signupform input[type=reset]:hover, .signupform input[type=submit]:hover{
+
+
+	
+	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7a84d', endColorstr='#ffc46d',GradientType=0 ); /* IE6-8 */
+
+
+	
+	 
+ }
+ 
+ 
+ 
+ .loginform input[type=text], .loginform input[type=password], .loginform input[type=email]{
+	
+	
+	height: 24px;
+	padding-left:30px;
+	line-height:24px;
+	padding-top:3px;
+	padding-bottom:3px;
+	
+	
+}
+ 
+
